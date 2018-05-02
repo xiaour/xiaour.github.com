@@ -5,19 +5,20 @@
   
 
   
-  <title>张涛的博客·XIAOUR</title>
+  <title>SpringMVC配置太多？试试SpringBoot | 张涛的博客·XIAOUR</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="张涛的博客·XIAOUR，JAVA技术博客">
+  <meta name="description" content="SpringMVC相信大家已经不再陌生了，大家可能对于Spring的各种XML配置已经产生了厌恶的感觉，Spring官方发布的Springboot 已经很长时间了，Springboot是一款“约定优于配置”的轻量级框架；Springboot首先解决的就是各种繁琐的XML配置，你可以不用任何XML配置，进行web服务的搭建，其次是Springboot本身就继承了web服务器，如果说前端开发人员想在本">
 <meta name="keywords" content="张涛的博客·XIAOUR，JAVA技术博客，Spring Mvc，SpringBoot">
-<meta property="og:type" content="website">
-<meta property="og:title" content="张涛的博客·XIAOUR">
-<meta property="og:url" content="http://totube.cn/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringMVC配置太多？试试SpringBoot">
+<meta property="og:url" content="http://totube.cn/2018/05/02/cjgoss30300004vfyb10ujgdj/index.html">
 <meta property="og:site_name" content="张涛的博客·XIAOUR">
-<meta property="og:description" content="张涛的博客·XIAOUR，JAVA技术博客">
+<meta property="og:description" content="SpringMVC相信大家已经不再陌生了，大家可能对于Spring的各种XML配置已经产生了厌恶的感觉，Spring官方发布的Springboot 已经很长时间了，Springboot是一款“约定优于配置”的轻量级框架；Springboot首先解决的就是各种繁琐的XML配置，你可以不用任何XML配置，进行web服务的搭建，其次是Springboot本身就继承了web服务器，如果说前端开发人员想在本">
 <meta property="og:locale" content="ZH_CN">
+<meta property="og:updated_time" content="2018-05-02T05:45:12.648Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="张涛的博客·XIAOUR">
-<meta name="twitter:description" content="张涛的博客·XIAOUR，JAVA技术博客">
+<meta name="twitter:title" content="SpringMVC配置太多？试试SpringBoot">
+<meta name="twitter:description" content="SpringMVC相信大家已经不再陌生了，大家可能对于Spring的各种XML配置已经产生了厌恶的感觉，Spring官方发布的Springboot 已经很长时间了，Springboot是一款“约定优于配置”的轻量级框架；Springboot首先解决的就是各种繁琐的XML配置，你可以不用任何XML配置，进行web服务的搭建，其次是Springboot本身就继承了web服务器，如果说前端开发人员想在本">
   
     <link rel="alternate" href="/atom.xml" title="张涛的博客·XIAOUR" type="application/atom+xml">
   
@@ -68,211 +69,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-简单好用-JAVA使用POI解析Excel" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/02/cjgoss30900024vfyfe64q1za/" class="article-date">
-  <time datetime="2018-05-02T07:43:43.000Z" itemprop="datePublished">2018-05-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/02/cjgoss30900024vfyfe64q1za/">简单好用-JAVA使用POI解析Excel</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>相信使用POI的目前已经非常多了，我这边提供一个非常简单便利又通用的POI解析工具类，代码最后有示例代码。可以按照本文直接使用。</p>
-<pre><code>
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFDateUtil;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
-
-/**
- * 
- * Title: ExcelReader<br>
- * Description: 可以读取xls,xlsx等文件<br>
- * Copyright @ 2012~2016 xiaour.github.com<span style="font-size: 1em;"> .All rights reserved.<br></span>
- * @author  小鱼儿
- * @createDate 2016年8月23日
- * @version v1.0
- */
-public class ExcelReader {
-    private POIFSFileSystem fs;
-    private HSSFWorkbook wb;
-    private HSSFSheet sheet;
-    private HSSFRow row;
-    private static Logger logger = LogManager.getLogger(ExcelReader.class);
-
-    private String fileFullPath;
-
-    private int sheetNo;
-
-
-
-    public ExcelReader(String fileFullPath, int sheetNo) {
-        super();
-        this.fileFullPath = fileFullPath;
-        this.sheetNo = sheetNo;
-    }
-
-    /**
-     * 读取Excel数据内容
-     * @param InputStream 
-     * @param sheetNo sheet 页号
-     * @return Map 包含单元格数据内容的Map对象
-     */
-    public List<map<string,object>> readExcel() {
-        logger.info("开始解析xls...");
-        sheetNo--;//从1开始及从0开始
-        InputStream is = null;
-        try {
-            is = new FileInputStream(fileFullPath);
-        } catch (FileNotFoundException e1) {
-            logger.error(e1);
-        }
-        Map<string,object> dataMap = null;
-        List<map<string,object>> dataList= new ArrayList<>();
-        String value = "";
-         try {
-             fs = new POIFSFileSystem(is);
-             wb = new HSSFWorkbook(fs);
-         } catch (IOException e) {
-             logger.error(e);
-         }
-         sheet = wb.getSheetAt(sheetNo);
-         row = sheet.getRow(0);
-         // 标题总列数
-         int colNum = row.getPhysicalNumberOfCells();
-         String[] keyArray = new String[colNum];
-         for (int i = 0; i < colNum; i++) {
-             keyArray[i] = getCellFormatValue(row.getCell((short) i));
-         }
-        int rowNum = sheet.getLastRowNum();
-        // 正文内容应该从第二行开始,第一行为表头的标题
-        for (int i = 2; i <= rownum;="" i++)="" {="" datamap="new" hashmap<="">();
-            row = sheet.getRow(i);
-            if(row!=null){
-                int j = 0;
-                while (j < colNum) {
-                    //这里把列循环到Map
-                    if(row.getCell((short) j)!=null){
-                    value = getCellFormatValue(row.getCell((short) j)).trim();
-                    dataMap.put(keyArray[j],value);
-                    }
-                    j++;
-                }
-                value = "";
-                dataList.add(dataMap);
-            }
-        }
-        logger.info("解析xls完成...");
-        try {
-            if(is!=null)
-            is.close();
-        } catch (IOException e) {
-            logger.error(e.toString());
-        }
-        return dataList;
-    }
-
-    /**
-     * 根据HSSFCell类型设置数据
-     * @param cell
-     * @return
-     */
-    private String getCellFormatValue(HSSFCell cell) {
-        String cellvalue = "";
-        if (cell != null) {
-            // 判断当前Cell的Type
-            switch (cell.getCellType()) {
-            // 如果当前Cell的Type为NUMERIC
-            case HSSFCell.CELL_TYPE_NUMERIC:
-            case HSSFCell.CELL_TYPE_FORMULA: {
-                // 判断当前的cell是否为Date
-                if (HSSFDateUtil.isCellDateFormatted(cell)) {
-                    Date date = cell.getDateCellValue();
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    cellvalue = sdf.format(date);
-                }
-                // 如果是纯数字
-                else {
-                    // 取得当前Cell的数值
-                    DecimalFormat df = new DecimalFormat("0");  
-                    String dfStr = df.format(cell.getNumericCellValue()); 
-                    cellvalue = dfStr;
-                }
-                break;
-            }
-            // 如果当前Cell的Type为STRIN
-            case HSSFCell.CELL_TYPE_STRING:
-                // 取得当前的Cell字符串
-                cellvalue = cell.getRichStringCellValue().getString();
-                break;
-            // 默认的Cell值
-            default:
-                cellvalue = " ";
-            }
-        } else {
-            cellvalue = "";
-        }
-        return cellvalue;
-
-    }
-
-    public static void main(String[] args) {
-            List<map<string, object="">> dataList;
-            // 对读取Excel表格标题测试
-            ExcelReader excelReader = new ExcelReader("D:\\okcoin-2016-08-3XZS.xls",1);
-            dataList = excelReader.readExcel();
-            for(Map<string,object> theMap:dataList){
-                System.out.println(theMap);
-            }
-    }
-}
-</string,object></map<string,></=></map<string,object></string,object></map<string,object></code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://totube.cn/2018/05/02/cjgoss30900024vfyfe64q1za/" data-id="cjgoss30900024vfyfe64q1za" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-SpringMVC配置太多？试试SpringBoot" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-SpringMVC配置太多？试试SpringBoot" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/02/cjgoss30300004vfyb10ujgdj/" class="article-date">
   <time datetime="2018-05-02T03:43:43.000Z" itemprop="datePublished">2018-05-02</time>
@@ -285,8 +82,8 @@ public class ExcelReader {
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/02/cjgoss30300004vfyb10ujgdj/">SpringMVC配置太多？试试SpringBoot</a>
+    <h1 class="article-title" itemprop="name">
+      SpringMVC配置太多？试试SpringBoot
     </h1>
   
 
@@ -533,56 +330,28 @@ return JsonUtil.getJsonString(user);
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/02/cjgoss30700014vfyw78a12yf/" class="article-date">
-  <time datetime="2018-05-02T03:34:47.629Z" itemprop="datePublished">2018-05-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2018/05/02/cjgoss30900024vfyfe64q1za/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
+          简单好用-JAVA使用POI解析Excel
+        
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/02/cjgoss30700014vfyw78a12yf/">Hello World</a>
-    </h1>
   
+    <a href="/2018/05/02/cjgoss30700014vfyw78a12yf/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://totube.cn/2018/05/02/cjgoss30700014vfyw78a12yf/" data-id="cjgoss30700014vfyw78a12yf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
