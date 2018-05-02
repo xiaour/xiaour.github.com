@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>JAVA基础之任意字符分组排序 | 张涛的博客·XIAOUR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这是一段将任意字符分组排序输出的代码，里面共分为大写字母、小写字母、符号、数字等四类字符的排序输出，例子简单易懂，也算是对java基础的一种回顾吧。  public static void main(String[] args) {       String orginalCharts=&quot;a8sGb9eu%7Ad5@D3cF6fB,10Hg2CI4f&quot;;        String upperca">
+<meta name="keywords" content="张涛的博客·XIAOUR，JAVA技术博客，Spring Mvc，SpringBoot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA基础之任意字符分组排序">
+<meta property="og:url" content="http://totube.cn/2018/05/02/cjgotcoe200027ffyqs96yg3z/index.html">
+<meta property="og:site_name" content="张涛的博客·XIAOUR">
+<meta property="og:description" content="这是一段将任意字符分组排序输出的代码，里面共分为大写字母、小写字母、符号、数字等四类字符的排序输出，例子简单易懂，也算是对java基础的一种回顾吧。  public static void main(String[] args) {       String orginalCharts=&quot;a8sGb9eu%7Ad5@D3cF6fB,10Hg2CI4f&quot;;        String upperca">
+<meta property="og:locale" content="ZH_CN">
+<meta property="og:updated_time" content="2018-05-02T07:50:14.246Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA基础之任意字符分组排序">
+<meta name="twitter:description" content="这是一段将任意字符分组排序输出的代码，里面共分为大写字母、小写字母、符号、数字等四类字符的排序输出，例子简单易懂，也算是对java基础的一种回顾吧。  public static void main(String[] args) {       String orginalCharts=&quot;a8sGb9eu%7Ad5@D3cF6fB,10Hg2CI4f&quot;;        String upperca">
+  
+    <link rel="alternate" href="/atom.xml" title="张涛的博客·XIAOUR" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">张涛的博客·XIAOUR</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">张涛的博客-XIAOUR</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://totube.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JAVA基础之任意字符分组排序" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/02/cjgotcoe200027ffyqs96yg3z/" class="article-date">
+  <time datetime="2018-05-02T07:48:43.000Z" itemprop="datePublished">2018-05-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JAVA基础之任意字符分组排序
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是一段将任意字符分组排序输出的代码，里面共分为大写字母、小写字母、符号、数字等四类字符的排序输出，例子简单易懂，也算是对java基础的一种回顾吧。</p>
+<pre><code>
+public static void main(String[] args) {  
+    String orginalCharts="a8sGb9eu%7Ad5@D3cF6fB,10Hg2CI4f";  
+
+    String uppercaseCharts="";//大写字母  
+
+    String lowercaseCharts="";//小写字母  
+
+    String digitCharts="";//数字  
+
+    String symbolCharts="";//符号  
+
+    char[] c=orginalCharts.toCharArray();  
+    //排序  
+    Arrays.sort(c);  
+
+    for(char s:c){  
+
+        if(Character.isUpperCase(s)){  
+
+            uppercaseCharts+=s;  
+
+        }else if(Character.isLowerCase(s)){  
+
+            lowercaseCharts+=s;  
+
+        }else if(Character.isDigit(s)){  
+
+            digitCharts+=s;  
+
+        }else{  
+
+            symbolCharts+=s;  
+
+        }  
+    }  
+    System.out.println(uppercaseCharts+"\n"+lowercaseCharts+"\n"+digitCharts+"\n"+symbolCharts);  
+
+}  
+</code></pre>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://totube.cn/2018/05/02/cjgotcoe200027ffyqs96yg3z/" data-id="cjgotcoe200027ffyqs96yg3z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/02/cjgotcodw00007ffypzfae73q/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JAVA之模拟Syslog客户端UDP发送日志
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/02/cjgotcoe700067ffy6f5lezrn/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">简单好用-JAVA使用POI解析Excel</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/05/02/cjgotcoe000017ffyry2ahfj1/">JAVA之服务端UDP接收Syslog</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/02/cjgotcodw00007ffypzfae73q/">JAVA之模拟Syslog客户端UDP发送日志</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/02/cjgotcoe200027ffyqs96yg3z/">JAVA基础之任意字符分组排序</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/02/cjgotcoe700067ffy6f5lezrn/">简单好用-JAVA使用POI解析Excel</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/02/cjgotcoe300037ffy0fhwrzi8/">SpringMVC配置太多？试试SpringBoot</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 张涛·XIAOUR<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

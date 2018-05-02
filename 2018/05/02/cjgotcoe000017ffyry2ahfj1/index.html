@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>JAVA之服务端UDP接收Syslog | 张涛的博客·XIAOUR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="import java.io.IOException; import java.net.DatagramPacket; import java.net.DatagramSocket; import java.net.InetAddress; import java.net.InetSocketAddress; import java.net.SocketException;  /**  * Co">
+<meta name="keywords" content="张涛的博客·XIAOUR，JAVA技术博客，Spring Mvc，SpringBoot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA之服务端UDP接收Syslog">
+<meta property="og:url" content="http://totube.cn/2018/05/02/cjgotcoe000017ffyry2ahfj1/index.html">
+<meta property="og:site_name" content="张涛的博客·XIAOUR">
+<meta property="og:description" content="import java.io.IOException; import java.net.DatagramPacket; import java.net.DatagramSocket; import java.net.InetAddress; import java.net.InetSocketAddress; import java.net.SocketException;  /**  * Co">
+<meta property="og:locale" content="ZH_CN">
+<meta property="og:updated_time" content="2018-05-02T08:01:43.640Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA之服务端UDP接收Syslog">
+<meta name="twitter:description" content="import java.io.IOException; import java.net.DatagramPacket; import java.net.DatagramSocket; import java.net.InetAddress; import java.net.InetSocketAddress; import java.net.SocketException;  /**  * Co">
+  
+    <link rel="alternate" href="/atom.xml" title="张涛的博客·XIAOUR" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">张涛的博客·XIAOUR</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">张涛的博客-XIAOUR</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://totube.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JAVA之服务端UDP接收Syslog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/02/cjgotcoe000017ffyry2ahfj1/" class="article-date">
+  <time datetime="2018-05-02T08:00:38.000Z" itemprop="datePublished">2018-05-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JAVA之服务端UDP接收Syslog
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.SocketException;
+
+/**
+ * Copyright 2015 HP
+ * All right reserved.    
+ * UDP服务类.  采集syslog   
+ * @version 1.0 
+ * Creation date: 2015-8-18 - 下午16:32:31
+ */
+public class UdpServerSocket {
+    private byte[] buffer = new byte[1024];
+
+    private DatagramSocket ds = null;
+
+    private DatagramPacket packet = null;
+
+    private InetSocketAddress socketAddress = null;
+
+    private String orgIp;
+
+    /**
+     * 构造函数，绑定主机和端口.
+     * @param host 主机
+     * @param port 端口
+     * @throws Exception
+     */
+    public UdpServerSocket(String host, int port) throws Exception {
+        socketAddress = new InetSocketAddress(host, port);
+        ds = new DatagramSocket(socketAddress);
+        System.out.println("--------------service start----------------");
+    }
+
+    public final String getOrgIp() {
+        return orgIp;
+    }
+
+    /**
+     * 设置超时时间，该方法必须在bind方法之后使用.
+     * @param timeout 超时时间
+     * @throws Exception
+     */
+    public final void setSoTimeout(int timeout) throws Exception {
+        ds.setSoTimeout(timeout);
+    }
+
+    /**
+     * 获得超时时间.
+     * @return 返回超时时间.
+     * @throws Exception
+
+      - 下午10:34:36
+     */
+    public final int getSoTimeout() throws Exception {
+        return ds.getSoTimeout();
+    }
+
+    /**
+     * 绑定监听地址和端口.
+     * @param host 主机IP
+     * @param port 端口
+     * @throws SocketException
+
+      - 下午10:36:17
+     */
+    public final void bind(String host, int port) throws SocketException {
+        socketAddress = new InetSocketAddress(host, port);
+        ds = new DatagramSocket(socketAddress);
+    }
+
+
+    /**
+     * 接收数据包，该方法会造成线程阻塞.
+     * @return 返回接收的数据串信息
+     * @throws IOException
+
+      - 下午10:38:24
+     */
+    public final String receive() throws IOException {
+        packet = new DatagramPacket(buffer, buffer.length);
+        ds.receive(packet);
+        orgIp = packet.getAddress().getHostAddress();
+        String info = new String(packet.getData(), 0, packet.getLength());
+        System.out.println(info);
+        //System.out.println("CONTENT="+info+":SOURCE_IP="+packet.getAddress().getHostAddress()+"SOURCE_PORT:"+packet.getPort());
+        return info;
+    }
+
+    /**
+     * 将响应包发送给请求端.
+     * @param bytes 回应报文
+     * @throws IOException
+
+      - 下午11:05:31
+     */
+    public final void response(String info) throws IOException {
+        System.out.println("Client IP" + packet.getAddress().getHostAddress()
+                + ",Port：" + packet.getPort());
+        DatagramPacket dp = new DatagramPacket(buffer, buffer.length, packet
+                .getAddress(), packet.getPort());
+        dp.setData(info.getBytes());
+        ds.send(dp);
+    }
+
+    /**
+     * 设置报文的缓冲长度.
+     * @param bufsize 缓冲长度
+
+      - 下午10:47:49
+     */
+    public final void setLength(int bufsize) {
+        packet.setLength(bufsize);
+    }
+
+    /**
+     * 获得发送回应的IP地址.
+     * @return 返回回应的IP地址
+
+      - 下午10:48:27
+     */
+    public final InetAddress getResponseAddress() {
+        return packet.getAddress();
+    }
+
+    /**
+     * 获得回应的主机的端口.
+     * @return 返回回应的主机的端口.
+
+      - 下午10:48:56
+     */
+    public final int getResponsePort() {
+        return packet.getPort();
+    }
+
+    /**
+     * 关闭udp监听口.
+
+      - 下午10:49:23
+     */
+    public final void close() {
+        try {
+            ds.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * 测试方法.
+     * @param args
+     * @throws Exception
+
+      - 下午10:49:50
+     */
+    public static void main(String[] args) throws Exception {
+        //这里的IP是你本机的IP也就是syslog服务器的IP
+        String serverHost = "192.168.100.188";
+        int serverPort = 514;
+        UdpServerSocket udpServerSocket = new UdpServerSocket(serverHost, serverPort);
+        while (true) {
+            udpServerSocket.receive();
+        }
+    }
+}
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://totube.cn/2018/05/02/cjgotcoe000017ffyry2ahfj1/" data-id="cjgotcoe000017ffyry2ahfj1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/02/cjgotcodw00007ffypzfae73q/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JAVA之模拟Syslog客户端UDP发送日志</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/05/02/cjgotcoe000017ffyry2ahfj1/">JAVA之服务端UDP接收Syslog</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/02/cjgotcodw00007ffypzfae73q/">JAVA之模拟Syslog客户端UDP发送日志</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/02/cjgotcoe200027ffyqs96yg3z/">JAVA基础之任意字符分组排序</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/02/cjgotcoe700067ffy6f5lezrn/">简单好用-JAVA使用POI解析Excel</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/02/cjgotcoe300037ffy0fhwrzi8/">SpringMVC配置太多？试试SpringBoot</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 张涛·XIAOUR<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

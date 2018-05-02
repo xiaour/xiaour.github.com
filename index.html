@@ -70,9 +70,438 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JAVA之服务端UDP接收Syslog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/02/cjgotcoe000017ffyry2ahfj1/" class="article-date">
+  <time datetime="2018-05-02T08:00:38.000Z" itemprop="datePublished">2018-05-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/02/cjgotcoe000017ffyry2ahfj1/">JAVA之服务端UDP接收Syslog</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.SocketException;
+
+/**
+ * Copyright 2015 HP
+ * All right reserved.    
+ * UDP服务类.  采集syslog   
+ * @version 1.0 
+ * Creation date: 2015-8-18 - 下午16:32:31
+ */
+public class UdpServerSocket {
+    private byte[] buffer = new byte[1024];
+
+    private DatagramSocket ds = null;
+
+    private DatagramPacket packet = null;
+
+    private InetSocketAddress socketAddress = null;
+
+    private String orgIp;
+
+    /**
+     * 构造函数，绑定主机和端口.
+     * @param host 主机
+     * @param port 端口
+     * @throws Exception
+     */
+    public UdpServerSocket(String host, int port) throws Exception {
+        socketAddress = new InetSocketAddress(host, port);
+        ds = new DatagramSocket(socketAddress);
+        System.out.println("--------------service start----------------");
+    }
+
+    public final String getOrgIp() {
+        return orgIp;
+    }
+
+    /**
+     * 设置超时时间，该方法必须在bind方法之后使用.
+     * @param timeout 超时时间
+     * @throws Exception
+     */
+    public final void setSoTimeout(int timeout) throws Exception {
+        ds.setSoTimeout(timeout);
+    }
+
+    /**
+     * 获得超时时间.
+     * @return 返回超时时间.
+     * @throws Exception
+
+      - 下午10:34:36
+     */
+    public final int getSoTimeout() throws Exception {
+        return ds.getSoTimeout();
+    }
+
+    /**
+     * 绑定监听地址和端口.
+     * @param host 主机IP
+     * @param port 端口
+     * @throws SocketException
+
+      - 下午10:36:17
+     */
+    public final void bind(String host, int port) throws SocketException {
+        socketAddress = new InetSocketAddress(host, port);
+        ds = new DatagramSocket(socketAddress);
+    }
+
+
+    /**
+     * 接收数据包，该方法会造成线程阻塞.
+     * @return 返回接收的数据串信息
+     * @throws IOException
+
+      - 下午10:38:24
+     */
+    public final String receive() throws IOException {
+        packet = new DatagramPacket(buffer, buffer.length);
+        ds.receive(packet);
+        orgIp = packet.getAddress().getHostAddress();
+        String info = new String(packet.getData(), 0, packet.getLength());
+        System.out.println(info);
+        //System.out.println("CONTENT="+info+":SOURCE_IP="+packet.getAddress().getHostAddress()+"SOURCE_PORT:"+packet.getPort());
+        return info;
+    }
+
+    /**
+     * 将响应包发送给请求端.
+     * @param bytes 回应报文
+     * @throws IOException
+
+      - 下午11:05:31
+     */
+    public final void response(String info) throws IOException {
+        System.out.println("Client IP" + packet.getAddress().getHostAddress()
+                + ",Port：" + packet.getPort());
+        DatagramPacket dp = new DatagramPacket(buffer, buffer.length, packet
+                .getAddress(), packet.getPort());
+        dp.setData(info.getBytes());
+        ds.send(dp);
+    }
+
+    /**
+     * 设置报文的缓冲长度.
+     * @param bufsize 缓冲长度
+
+      - 下午10:47:49
+     */
+    public final void setLength(int bufsize) {
+        packet.setLength(bufsize);
+    }
+
+    /**
+     * 获得发送回应的IP地址.
+     * @return 返回回应的IP地址
+
+      - 下午10:48:27
+     */
+    public final InetAddress getResponseAddress() {
+        return packet.getAddress();
+    }
+
+    /**
+     * 获得回应的主机的端口.
+     * @return 返回回应的主机的端口.
+
+      - 下午10:48:56
+     */
+    public final int getResponsePort() {
+        return packet.getPort();
+    }
+
+    /**
+     * 关闭udp监听口.
+
+      - 下午10:49:23
+     */
+    public final void close() {
+        try {
+            ds.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * 测试方法.
+     * @param args
+     * @throws Exception
+
+      - 下午10:49:50
+     */
+    public static void main(String[] args) throws Exception {
+        //这里的IP是你本机的IP也就是syslog服务器的IP
+        String serverHost = "192.168.100.188";
+        int serverPort = 514;
+        UdpServerSocket udpServerSocket = new UdpServerSocket(serverHost, serverPort);
+        while (true) {
+            udpServerSocket.receive();
+        }
+    }
+}
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://totube.cn/2018/05/02/cjgotcoe000017ffyry2ahfj1/" data-id="cjgotcoe000017ffyry2ahfj1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JAVA之模拟Syslog客户端UDP发送日志" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/02/cjgotcodw00007ffypzfae73q/" class="article-date">
+  <time datetime="2018-05-02T07:58:40.000Z" itemprop="datePublished">2018-05-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/02/cjgotcodw00007ffypzfae73q/">JAVA之模拟Syslog客户端UDP发送日志</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre>
+<code>
+
+    import java.io.*;    
+import java.net.*;    
+
+/**
+ * UDP客户端程序，用于对服务端发送数据，并接收服务端的回应信息.   
+ * Title: SyslogClient
+ * Description: none
+ * Copyright @ 2012~2015 HP<br>
+ * @author Tony
+ * @createDate 2015年8月18日
+ * @version v1.0
+ */
+public class SyslogClient {    
+    private byte[] buffer = new byte[1024];    
+
+    private DatagramSocket ds = null;    
+
+    /**  
+     * 构造函数，创建UDP客户端  
+     * @throws Exception  
+     */    
+    public SyslogClient() throws Exception {    
+        ds = new DatagramSocket();    
+    }    
+
+    /**  
+     * 设置超时时间，该方法必须在bind方法之后使用.  
+     * @param timeout 超时时间  
+     * @throws Exception  
+     */    
+    public final void setSoTimeout(final int timeout) throws Exception {    
+        ds.setSoTimeout(timeout);    
+    }    
+
+    /**  
+     * 获得超时时间.  
+     * @return 返回超时时间  
+     * @throws Exception  
+     */    
+    public final int getSoTimeout() throws Exception {    
+        return ds.getSoTimeout();    
+    }    
+
+    public final DatagramSocket getSocket() {    
+        return ds;    
+    }    
+
+    /**  
+     * 接收从指定的服务端发回的数据.  
+     * @param lhost 服务端主机  
+     * @param lport 服务端端口  
+     * @return 返回从指定的服务端发回的数据.  
+     * @throws Exception  
+     */    
+    public final String receive(final String lhost, final int lport)    
+            throws Exception {    
+        DatagramPacket dp = new DatagramPacket(buffer, buffer.length);    
+        ds.receive(dp);    
+        String info = new String(dp.getData(), 0, dp.getLength());    
+        return info;    
+    }    
+
+    /**  
+     * 关闭udp连接.  
+     */    
+    public final void close() {    
+        try {    
+            ds.close();    
+        } catch (Exception ex) {    
+            ex.printStackTrace();    
+        }    
+    }   
+
+    /**  
+     * 向指定的服务端发送数据信息.  
+     * @param host 服务器主机地址  
+     * @param port 服务端端口  
+     * @param bytes 发送的数据信息  
+     * @return 返回构造后俄数据报  
+     * @throws IOException  
+     */    
+    public final DatagramPacket send(final String host, final int port,    
+            final byte[] bytes) throws IOException {    
+        DatagramPacket dp = new DatagramPacket(bytes, bytes.length, InetAddress    
+                .getByName(host), port);    
+        ds.send(dp);    
+        return dp;    
+    }
+
+    /**  
+     * 测试客户端发包和接收回应信息的方法.  
+     * @param args  
+     * @throws Exception  
+     */    
+    public static void main(String[] args) throws Exception {    
+        SyslogClient client = new SyslogClient();   
+        //这里我们在本机测试，使用本机IP即可
+        String serverHost = "127.0.0.1";    
+        int serverPort = 514;    
+        client.send(serverHost, serverPort, ("什么都可以的接收参数").getBytes());   
+        String info = client.receive(serverHost, serverPort);    
+        System.out.println("服务端回应数据：" + info);
+    }    
+}  
+</code>
+</pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://totube.cn/2018/05/02/cjgotcodw00007ffypzfae73q/" data-id="cjgotcodw00007ffypzfae73q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JAVA基础之任意字符分组排序" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/02/cjgotcoe200027ffyqs96yg3z/" class="article-date">
+  <time datetime="2018-05-02T07:48:43.000Z" itemprop="datePublished">2018-05-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/02/cjgotcoe200027ffyqs96yg3z/">JAVA基础之任意字符分组排序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是一段将任意字符分组排序输出的代码，里面共分为大写字母、小写字母、符号、数字等四类字符的排序输出，例子简单易懂，也算是对java基础的一种回顾吧。</p>
+<pre><code>
+public static void main(String[] args) {  
+    String orginalCharts="a8sGb9eu%7Ad5@D3cF6fB,10Hg2CI4f";  
+
+    String uppercaseCharts="";//大写字母  
+
+    String lowercaseCharts="";//小写字母  
+
+    String digitCharts="";//数字  
+
+    String symbolCharts="";//符号  
+
+    char[] c=orginalCharts.toCharArray();  
+    //排序  
+    Arrays.sort(c);  
+
+    for(char s:c){  
+
+        if(Character.isUpperCase(s)){  
+
+            uppercaseCharts+=s;  
+
+        }else if(Character.isLowerCase(s)){  
+
+            lowercaseCharts+=s;  
+
+        }else if(Character.isDigit(s)){  
+
+            digitCharts+=s;  
+
+        }else{  
+
+            symbolCharts+=s;  
+
+        }  
+    }  
+    System.out.println(uppercaseCharts+"\n"+lowercaseCharts+"\n"+digitCharts+"\n"+symbolCharts);  
+
+}  
+</code></pre>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://totube.cn/2018/05/02/cjgotcoe200027ffyqs96yg3z/" data-id="cjgotcoe200027ffyqs96yg3z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-简单好用-JAVA使用POI解析Excel" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/05/02/cjgoss30900024vfyfe64q1za/" class="article-date">
+    <a href="/2018/05/02/cjgotcoe700067ffy6f5lezrn/" class="article-date">
   <time datetime="2018-05-02T07:43:43.000Z" itemprop="datePublished">2018-05-02</time>
 </a>
     
@@ -84,7 +513,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/02/cjgoss30900024vfyfe64q1za/">简单好用-JAVA使用POI解析Excel</a>
+      <a class="article-title" href="/2018/05/02/cjgotcoe700067ffy6f5lezrn/">简单好用-JAVA使用POI解析Excel</a>
     </h1>
   
 
@@ -262,7 +691,7 @@ public class ExcelReader {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://totube.cn/2018/05/02/cjgoss30900024vfyfe64q1za/" data-id="cjgoss30900024vfyfe64q1za" class="article-share-link">Share</a>
+      <a data-url="http://totube.cn/2018/05/02/cjgotcoe700067ffy6f5lezrn/" data-id="cjgotcoe700067ffy6f5lezrn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -274,7 +703,7 @@ public class ExcelReader {
   
     <article id="post-SpringMVC配置太多？试试SpringBoot" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/05/02/cjgoss30300004vfyb10ujgdj/" class="article-date">
+    <a href="/2018/05/02/cjgotcoe300037ffy0fhwrzi8/" class="article-date">
   <time datetime="2018-05-02T03:43:43.000Z" itemprop="datePublished">2018-05-02</time>
 </a>
     
@@ -286,7 +715,7 @@ public class ExcelReader {
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/02/cjgoss30300004vfyb10ujgdj/">SpringMVC配置太多？试试SpringBoot</a>
+      <a class="article-title" href="/2018/05/02/cjgotcoe300037ffy0fhwrzi8/">SpringMVC配置太多？试试SpringBoot</a>
     </h1>
   
 
@@ -527,7 +956,7 @@ return JsonUtil.getJsonString(user);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://totube.cn/2018/05/02/cjgoss30300004vfyb10ujgdj/" data-id="cjgoss30300004vfyb10ujgdj" class="article-share-link">Share</a>
+      <a data-url="http://totube.cn/2018/05/02/cjgotcoe300037ffy0fhwrzi8/" data-id="cjgotcoe300037ffy0fhwrzi8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -537,10 +966,10 @@ return JsonUtil.getJsonString(user);
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-图片验证码的JAVA工具类" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/05/02/cjgoss30700014vfyw78a12yf/" class="article-date">
-  <time datetime="2018-05-02T03:34:47.629Z" itemprop="datePublished">2018-05-02</time>
+    <a href="/2018/05/02/cjgotcoe600057ffypqjh0dtf/" class="article-date">
+  <time datetime="2018-05-02T02:48:43.000Z" itemprop="datePublished">2018-05-02</time>
 </a>
     
   </div>
@@ -551,7 +980,7 @@ return JsonUtil.getJsonString(user);
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/02/cjgoss30700014vfyw78a12yf/">Hello World</a>
+      <a class="article-title" href="/2018/05/02/cjgotcoe600057ffypqjh0dtf/">JAVA之图片验证码的工具类</a>
     </h1>
   
 
@@ -559,20 +988,210 @@ return JsonUtil.getJsonString(user);
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>我们平时开发时经常会遇到需要图片验证码，基础的验证码包括了数字、字母、甚至可能有汉字。下面我给出一个简单的工具类。</p>
+<pre><code>
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Date;
+import java.util.Random;
+import javax.imageio.ImageIO;
+
+/**
+ * 验证码生成器
+ */
+public class ValidateCode {
+
+    // 图片的宽度。
+    private int width = 160;
+    // 图片的高度。
+    private int height = 40;
+    // 验证码字符个数
+    private int codeCount = 5;
+    // 验证码干扰线数
+    private int lineCount = 150;
+    // 验证码
+    private static String code = null;
+    // 验证码图片Buffer
+    private BufferedImage buffImg = null;
+
+    private char[] codeSequence = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R',
+            'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '2', '3', '4', '5', '6', '7', '8', '9' };
+
+    public ValidateCode() {
+        this.createCode();
+    }
+
+    /**
+     * 
+     * @param width
+     *            图片宽
+     * @param height
+     *            图片高
+     */
+    public ValidateCode(int width, int height) {
+        this.width = width;
+        this.height = height;
+        this.createCode();
+    }
+
+    /**
+     * 
+     * @param width
+     *            图片宽
+     * @param height
+     *            图片高
+     * @param codeCount
+     *            字符个数
+     * @param lineCount
+     *            干扰线条数
+     */
+    public ValidateCode(int width, int height, int codeCount, int lineCount) {
+        this.width = width;
+        this.height = height;
+        this.codeCount = codeCount;
+        this.lineCount = lineCount;
+        this.createCode();
+    }
+
+    public void createCode() {
+        int x = 0, fontHeight = 0, codeY = 0;
+        int red = 0, green = 0, blue = 0;
+
+        x = width / (codeCount + 1);// 每个字符的宽度
+        fontHeight = height - 2;// 字体的高度
+        codeY = height - 3;
+
+        // 图像buffer
+        buffImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = buffImg.createGraphics();
+        // 生成随机数
+        Random random = new Random();
+        // 将图像填充为白色
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, width, height);
+        // 创建字体
+        ImgFontByte imgFont = new ImgFontByte();
+        Font font = imgFont.getFont(fontHeight);
+        g.setFont(font);
+        for (int i = 0; i < lineCount; i++) {
+            int xs = random.nextInt(width);
+            int ys = random.nextInt(height);
+            int xe = xs + random.nextInt(width / 8);
+            int ye = ys + random.nextInt(height / 8);
+            red = random.nextInt(255);
+            green = random.nextInt(255);
+            blue = random.nextInt(255);
+            g.setColor(new Color(red, green, blue));
+            g.drawLine(xs, ys, xe, ye);
+        }
+        // randomCode记录随机产生的验证码
+        StringBuffer randomCode = new StringBuffer();
+        // 随机产生codeCount个字符的验证码。
+        for (int i = 0; i < codeCount; i++) {
+            String strRand = String.valueOf(codeSequence[random.nextInt(codeSequence.length)]);
+            // 产生随机的颜色值，让输出的每个字符的颜色值都将不同。
+            red = random.nextInt(255);
+            green = random.nextInt(255);
+            blue = random.nextInt(255);
+            g.setColor(new Color(red, green, blue));
+            g.drawString(strRand, (i + 1) * x, codeY);
+            // 将产生的四个随机数组合在一起。
+            randomCode.append(strRand);
+        }
+        // 将四位数字的验证码保存到Session中。
+        code = randomCode.toString();
+    }
+
+    public void write(String path,String fileName) throws IOException {
+        File folder = new File(path);
+        if(!folder.exists()){
+            folder.mkdirs();
+        }
+        OutputStream sos = new FileOutputStream(path+fileName);
+        this.write(sos);
+    }
+
+    public void write(OutputStream sos) throws IOException {
+        ImageIO.write(buffImg, "png", sos);
+        sos.close();
+    }
+
+    public BufferedImage getBuffImg() {
+        return buffImg;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public static void main(String[] args) {  
+        ValidateCode vCode = new ValidateCode(120,40,5,50);  
+        try {  
+            String path="D:\\report\\image\\code\\";  
+            System.out.println(vCode.getCode()+" >"+path);  
+            vCode.write(path,new Date().getTime()+".png");  
+        } catch (IOException e) {  
+            e.printStackTrace();
+        }  
+     }
+
+}
+</code></pre>
+
+<p>下面这个类主要是用作字体的设置，大家也可以直接拿过来用。</p>
+<pre><code>
+import java.awt.Font;
+import java.io.ByteArrayInputStream;
+
+public class ImgFontByte {
+     public Font getFont(int fontHeight){  
+            try {  
+                Font baseFont = Font.createFont(Font.ITALIC, new ByteArrayInputStream(hex2byte(getFontByteStr()))); 
+                return baseFont.deriveFont(Font.PLAIN, fontHeight);  
+            } catch (Exception e) {  
+                return new Font("Consola",Font.PLAIN, fontHeight);  
+            }  
+        }  
+
+        private  byte[] hex2byte(String str) {   
+            if (str == null)  
+                return null;  
+            str = str.trim();  
+            int len = str.length();  
+            if (len == 0 || len % 2 == 1)  
+                return null;  
+            byte[] b = new byte[len / 2];  
+            try {  
+                for (int i = 0; i < str.length(); i += 2) {  
+                    b[i/2] = (byte) Integer.decode("0x" + str.substring(i, i + 2)).intValue();  
+                }  
+                return b;  
+            } catch (Exception e) {  
+                return null;  
+            }  
+        } 
+
+     /** 
+      * ttf字体文件的十六进制字符串 
+      * @return 
+      */  
+     private String getFontByteStr(){ 
+         return null;  
+     }  
+}
+
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://totube.cn/2018/05/02/cjgoss30700014vfyw78a12yf/" data-id="cjgoss30700014vfyw78a12yf" class="article-share-link">Share</a>
+      <a data-url="http://totube.cn/2018/05/02/cjgotcoe600057ffypqjh0dtf/" data-id="cjgotcoe600057ffypqjh0dtf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -613,15 +1232,23 @@ return JsonUtil.getJsonString(user);
       <ul>
         
           <li>
-            <a href="/2018/05/02/cjgoss30900024vfyfe64q1za/">简单好用-JAVA使用POI解析Excel</a>
+            <a href="/2018/05/02/cjgotcoe000017ffyry2ahfj1/">JAVA之服务端UDP接收Syslog</a>
           </li>
         
           <li>
-            <a href="/2018/05/02/cjgoss30300004vfyb10ujgdj/">SpringMVC配置太多？试试SpringBoot</a>
+            <a href="/2018/05/02/cjgotcodw00007ffypzfae73q/">JAVA之模拟Syslog客户端UDP发送日志</a>
           </li>
         
           <li>
-            <a href="/2018/05/02/cjgoss30700014vfyw78a12yf/">Hello World</a>
+            <a href="/2018/05/02/cjgotcoe200027ffyqs96yg3z/">JAVA基础之任意字符分组排序</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/02/cjgotcoe700067ffy6f5lezrn/">简单好用-JAVA使用POI解析Excel</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/02/cjgotcoe300037ffy0fhwrzi8/">SpringMVC配置太多？试试SpringBoot</a>
           </li>
         
       </ul>
