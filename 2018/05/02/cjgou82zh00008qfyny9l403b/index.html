@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang=ZH_CN>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="张涛的博客·XIAOUR，JAVA技术博客">
+  <meta name="keywords" content="张涛的博客·XIAOUR，JAVA技术博客，Spring Mvc，SpringBoot">
+  
+    <link rel="icon" href="/favicon.ico">
+  
+    
+  <title>JAVA之模拟Syslog客户端UDP发送日志 | 张涛的博客·XIAOUR</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>张涛的博客·XIAOUR</span>
+    </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
+
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>JAVA之模拟Syslog客户端UDP发送日志</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018/05/02</time>
+            
+            
+          </div>
+          <pre>
+<code>
+
+    import java.io.*;    
+import java.net.*;    
+
+/**
+ * UDP客户端程序，用于对服务端发送数据，并接收服务端的回应信息.   
+ * Title: SyslogClient
+ * Description: none
+ * Copyright @ 2012~2015 HP<br>
+ * @author Tony
+ * @createDate 2015年8月18日
+ * @version v1.0
+ */
+public class SyslogClient {    
+    private byte[] buffer = new byte[1024];    
+
+    private DatagramSocket ds = null;    
+
+    /**  
+     * 构造函数，创建UDP客户端  
+     * @throws Exception  
+     */    
+    public SyslogClient() throws Exception {    
+        ds = new DatagramSocket();    
+    }    
+
+    /**  
+     * 设置超时时间，该方法必须在bind方法之后使用.  
+     * @param timeout 超时时间  
+     * @throws Exception  
+     */    
+    public final void setSoTimeout(final int timeout) throws Exception {    
+        ds.setSoTimeout(timeout);    
+    }    
+
+    /**  
+     * 获得超时时间.  
+     * @return 返回超时时间  
+     * @throws Exception  
+     */    
+    public final int getSoTimeout() throws Exception {    
+        return ds.getSoTimeout();    
+    }    
+
+    public final DatagramSocket getSocket() {    
+        return ds;    
+    }    
+
+    /**  
+     * 接收从指定的服务端发回的数据.  
+     * @param lhost 服务端主机  
+     * @param lport 服务端端口  
+     * @return 返回从指定的服务端发回的数据.  
+     * @throws Exception  
+     */    
+    public final String receive(final String lhost, final int lport)    
+            throws Exception {    
+        DatagramPacket dp = new DatagramPacket(buffer, buffer.length);    
+        ds.receive(dp);    
+        String info = new String(dp.getData(), 0, dp.getLength());    
+        return info;    
+    }    
+
+    /**  
+     * 关闭udp连接.  
+     */    
+    public final void close() {    
+        try {    
+            ds.close();    
+        } catch (Exception ex) {    
+            ex.printStackTrace();    
+        }    
+    }   
+
+    /**  
+     * 向指定的服务端发送数据信息.  
+     * @param host 服务器主机地址  
+     * @param port 服务端端口  
+     * @param bytes 发送的数据信息  
+     * @return 返回构造后俄数据报  
+     * @throws IOException  
+     */    
+    public final DatagramPacket send(final String host, final int port,    
+            final byte[] bytes) throws IOException {    
+        DatagramPacket dp = new DatagramPacket(bytes, bytes.length, InetAddress    
+                .getByName(host), port);    
+        ds.send(dp);    
+        return dp;    
+    }
+
+    /**  
+     * 测试客户端发包和接收回应信息的方法.  
+     * @param args  
+     * @throws Exception  
+     */    
+    public static void main(String[] args) throws Exception {    
+        SyslogClient client = new SyslogClient();   
+        //这里我们在本机测试，使用本机IP即可
+        String serverHost = "127.0.0.1";    
+        int serverPort = 514;    
+        client.send(serverHost, serverPort, ("什么都可以的接收参数").getBytes());   
+        String info = client.receive(serverHost, serverPort);    
+        System.out.println("服务端回应数据：" + info);
+    }    
+}  
+</code>
+</pre>
+
+        </section>
+    </article>
+    
+        
+  </div>
+  <aside>
+    
+  </aside>
+</main>
+
+
+
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
+    </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
+
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
+
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
+
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
+
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
+
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
+
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
+
+
+</body>
+</html>
