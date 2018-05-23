@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="full-height">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <title>Springboot集成Kafka | 张涛的博客·XIAOUR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Kafka是一种高吞吐量的分布式发布订阅消息系统，有如下特性： 通过O(1)的磁盘数据结构提供消息的持久化，这种结构对于即使数以TB的消息存储也能够保持长时间的稳定性能。高吞吐量：即使是非常普通的硬件Kafka也可以支持每秒数百万的消息。支持通过Kafka服务器和消费机集群来分区消息。支持Hadoop并行数据加载。 Springboot的基本搭建和配置我在之前的文章已经给出代码示例了，如果还不了">
+<meta name="keywords" content="张涛的博客·XIAOUR，JAVA技术博客，Spring Mvc，SpringBoot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Springboot集成Kafka">
+<meta property="og:url" content="http://totube.cn/2018/05/23/cjhip0yeg0002pvfydkjn76on/index.html">
+<meta property="og:site_name" content="张涛的博客·XIAOUR">
+<meta property="og:description" content="Kafka是一种高吞吐量的分布式发布订阅消息系统，有如下特性： 通过O(1)的磁盘数据结构提供消息的持久化，这种结构对于即使数以TB的消息存储也能够保持长时间的稳定性能。高吞吐量：即使是非常普通的硬件Kafka也可以支持每秒数百万的消息。支持通过Kafka服务器和消费机集群来分区消息。支持Hadoop并行数据加载。 Springboot的基本搭建和配置我在之前的文章已经给出代码示例了，如果还不了">
+<meta property="og:locale" content="ZH_CN">
+<meta property="og:image" content="https://img.colabug.com/2017/08/199a9b646a346f1559f79850f2f0a65f.png">
+<meta property="og:updated_time" content="2018-05-23T05:53:54.648Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Springboot集成Kafka">
+<meta name="twitter:description" content="Kafka是一种高吞吐量的分布式发布订阅消息系统，有如下特性： 通过O(1)的磁盘数据结构提供消息的持久化，这种结构对于即使数以TB的消息存储也能够保持长时间的稳定性能。高吞吐量：即使是非常普通的硬件Kafka也可以支持每秒数百万的消息。支持通过Kafka服务器和消费机集群来分区消息。支持Hadoop并行数据加载。 Springboot的基本搭建和配置我在之前的文章已经给出代码示例了，如果还不了">
+<meta name="twitter:image" content="https://img.colabug.com/2017/08/199a9b646a346f1559f79850f2f0a65f.png">
+  
+    <link rel="alternate" href="/atom.xml" title="张涛的博客·XIAOUR" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+  
+
+</head>
+
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">张涛</XIAOUR></span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                Home
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
+    }
+
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
+    }
+
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
+    }
+</style>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>Springboot集成Kafka</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://avatars2.githubusercontent.com/u/3699646?s=460&v=4">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> 张涛</XIAOUR></span>
+                <span class="post-date sub-title">at: 2018-05-23</span>
+            </div>
+            
+                <div>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <p><img src="https://img.colabug.com/2017/08/199a9b646a346f1559f79850f2f0a65f.png" alt="post-cover"""></p>
+<p>Kafka是一种高吞吐量的分布式发布订阅消息系统，有如下特性： 通过O(1)的磁盘数据结构提供消息的持久化，这种结构对于即使数以TB的消息存储也能够保持长时间的稳定性能。高吞吐量：即使是非常普通的硬件Kafka也可以支持每秒数百万的消息。支持通过Kafka服务器和消费机集群来分区消息。支持Hadoop并行数据加载。</p>
+<p>Springboot的基本搭建和配置我在之前的文章已经给出代码示例了，如果还不了解的话可以先按照 SpringMVC配置太多？试试SpringBoot 进行学习哦。 那么如今很火的Springboot与kafka怎么完美的结合呢？多说无宜，放码过来 (talk is cheap,show me your code)!</p>
+<p>###安装Kafka<br>因为安装kafka需要zookeeper的支持，所以Windows安装时需要将zookeeper先安装上，然后将kafka安装好就可以了。 下面我给出Mac安装的步骤以及需要注意的点吧，windows的配置除了所在位置不太一样其他几乎没什么不同。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install kafka</span><br></pre></td></tr></table></figure></p>
+<p>对，就是这么简单，mac上一个命令就可以搞定了，这个安装过程可能需要等一会儿，应该是和网络状况有关系。安装提示信息可能有错误消息，如”Error: Could not link: /usr/local/share/doc/homebrew” 这个没关系，自动忽略掉了。 最终我们看到下面的样子就成功咯。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">==&gt; Summary ðº/usr/local/Cellar/kafka/1.1.0: 157 files, 47.8MB</span><br></pre></td></tr></table></figure></p>
+<p>安装的配置文件位置如下，根据自己的需要修改端口号什么的就可以了。</p>
+<p>安装的zoopeeper和kafka的位置 /usr/local/Cellar/</p>
+<p>配置文件 /usr/local/etc/kafka/server.properties /usr/local/etc/kafka/zookeeper.properties </p>
+<p>###启动zookeeper<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties &amp;</span><br></pre></td></tr></table></figure></p>
+<p>###启动kafka<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/kafka-server-start /usr/local/etc/kafka/server.properties &amp;</span><br></pre></td></tr></table></figure></p>
+<p>为kafka创建Topic,topic 名为test，可以配置成自己想要的名字，回头再代码中配置正确就可以了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test</span><br></pre></td></tr></table></figure></p>
+<p>###代码示例pom.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">  &lt;parent&gt;</span><br><span class="line">  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;2.0.2.RELEASE&lt;/version&gt;</span><br><span class="line">  &lt;relativePath/&gt;</span><br><span class="line">&lt;/parent&gt;</span><br><span class="line"></span><br><span class="line">&lt;properties&gt;</span><br><span class="line">  &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">  &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;</span><br><span class="line">  &lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">&lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.kafka&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-kafka&lt;/artifactId&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">    &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.google.code.gson&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;gson&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.8.2&lt;/version&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;RELEASE&lt;/version&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure></p>
+<p>###application.yml<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  servlet:</span></span><br><span class="line"><span class="attr">    context-path:</span> <span class="string">/</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">8080</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  kafka:</span></span><br><span class="line"><span class="attr">    bootstrap-servers:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:9092</span></span><br><span class="line"><span class="attr">    producer:</span></span><br><span class="line"><span class="attr">      batch-size:</span> <span class="number">16</span></span><br><span class="line"><span class="attr">      retries:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">      buffer-memory:</span> <span class="number">33554432</span></span><br><span class="line"><span class="attr">      key-serializer:</span> <span class="string">org.apache.kafka.common.serialization.StringSerializer</span></span><br><span class="line"><span class="attr">      value-serializer:</span> <span class="string">org.apache.kafka.common.serialization.StringSerializer</span></span><br><span class="line"><span class="attr">    consumer:</span></span><br><span class="line"><span class="attr">      auto-offset-reset:</span> <span class="string">latest</span></span><br><span class="line"><span class="attr">      enable-auto-commit:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">      auto-commit-interval:</span> <span class="number">100</span></span><br><span class="line"><span class="attr">      key-deserializer:</span> <span class="string">org.apache.kafka.common.serialization.StringDeserializer</span></span><br><span class="line"><span class="attr">      value-deserializer:</span> <span class="string">org.apache.kafka.common.serialization.StringDeserializer</span></span><br><span class="line"><span class="attr">      group-id:</span> <span class="string">test-consumer-group</span></span><br></pre></td></tr></table></figure></p>
+<p>###Producer 消息生产者</p>
+<p><code><br>@Component<br>public class Producer {</code></p>
+<pre><code>@Autowired
+private KafkaTemplate kafkaTemplate;
+
+private static Gson gson = new GsonBuilder().create();
+
+//发送消息方法
+public void send() {
+    Message message = new Message();
+    message.setId(&quot;KFK_&quot;+System.currentTimeMillis());
+    message.setMsg(UUID.randomUUID().toString());
+    message.setSendTime(new Date());
+    kafkaTemplate.send(&quot;test&quot;, gson.toJson(message));
+}
+</code></pre><p>}<br></p>
+<p><code><br>public class Message {</code></p>
+<pre><code>private String id;
+
+private String msg;
+
+private Date sendTime;
+
+public String getId() {
+    return id;
+}
+
+public void setId(String id) {
+    this.id = id;
+}
+
+public String getMsg() {
+    return msg;
+}
+
+public void setMsg(String msg) {
+    this.msg = msg;
+}
+
+public Date getSendTime() {
+    return sendTime;
+}
+
+public void setSendTime(Date sendTime) {
+    this.sendTime = sendTime;
+}
+</code></pre><p>}<br></p>
+<p>###Consumer 消息消费者<br><code><br>public class Consumer {</code></p>
+<pre><code>@KafkaListener(topics = {&quot;test&quot;})
+public void listen(ConsumerRecord&lt;?, ?&gt; record){
+
+    Optional&lt;?&gt; kafkaMessage = Optional.ofNullable(record.value());
+
+    if (kafkaMessage.isPresent()) {
+
+        Object message = kafkaMessage.get();
+        System.out.println(&quot;----&gt;&quot;+record);
+        System.out.println(&quot;----&gt;&quot;+message);
+
+    }
+
+}
+</code></pre><p>}<br></p>
+<p>###测试接口用例<br>这里我们用一个接口来测试我们的消息发送会不会被消费者接收。<br><code><br>@RestController<br>@RequestMapping(“/kafka”)<br>public class SendController {</code></p>
+<pre><code>@Autowired
+private Producer producer;
+
+@RequestMapping(value = &quot;/send&quot;)
+public String send() {
+    producer.send();
+    return &quot;{\&quot;code\&quot;:0}&quot;;
+}
+</code></pre><p>}<br></p>
+<p>在Springboot启动类启动后在浏览器访问<a href="http://127.0.0.1:8080/kafka/send，我们可以再IDE控制台中看到输出的结果，这时候我们的整合基本上就完成啦。" target="_blank" rel="noopener">http://127.0.0.1:8080/kafka/send，我们可以再IDE控制台中看到输出的结果，这时候我们的整合基本上就完成啦。</a> 具体代码可以在SpringBootKafkaDemo@github获取哦。pringBootKafkaDemo@github](<a href="https://github.com/xiaour/SpringBootDemo/tree/master/SpringBootKafkaDemo)获取哦。" target="_blank" rel="noopener">https://github.com/xiaour/SpringBootDemo/tree/master/SpringBootKafkaDemo)获取哦。</a></p>
+
+        </div>
+        <div class="post-reply">
+            
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTE4Ni81NzUz">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+            
+            
+        </div>
+    </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
+
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        Copyright © 张涛·XIAOUR 2018 
+        <br>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/search_core.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>
