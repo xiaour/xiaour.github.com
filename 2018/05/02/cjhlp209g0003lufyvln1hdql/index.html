@@ -6,20 +6,20 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   
-  <title>JAVA之模拟Syslog客户端UDP发送日志 | 张涛的博客·XIAOUR</title>
+  <title>JAVA基础之任意字符分组排序 | 张涛的博客·XIAOUR</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="import java.io.*;     import java.net.*;      /**  * UDP客户端程序，用于对服务端发送数据，并接收服务端的回应信息.     * Title: SyslogClient  * Description: none  * Copyright @ 2012~2015 HP  * @author Tony  * @createDate 2">
-<meta name="keywords" content="UDP,Syslog">
+  <meta name="description" content="这是一段将任意字符分组排序输出的代码，里面共分为大写字母、小写字母、符号、数字等四类字符的排序输出，例子简单易懂，也算是对java基础的一种回顾吧。  public static void main(String[] args) {       String orginalCharts=&quot;a8sGb9eu%7Ad5@D3cF6fB,10Hg2CI4f&quot;;        String upperca">
+<meta name="keywords" content="JAVA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA之模拟Syslog客户端UDP发送日志">
-<meta property="og:url" content="http://totube.cn/2018/05/02/cjhlo9p460001gufykbjpa32h/index.html">
+<meta property="og:title" content="JAVA基础之任意字符分组排序">
+<meta property="og:url" content="http://totube.cn/2018/05/02/cjhlp209g0003lufyvln1hdql/index.html">
 <meta property="og:site_name" content="张涛的博客·XIAOUR">
-<meta property="og:description" content="import java.io.*;     import java.net.*;      /**  * UDP客户端程序，用于对服务端发送数据，并接收服务端的回应信息.     * Title: SyslogClient  * Description: none  * Copyright @ 2012~2015 HP  * @author Tony  * @createDate 2">
+<meta property="og:description" content="这是一段将任意字符分组排序输出的代码，里面共分为大写字母、小写字母、符号、数字等四类字符的排序输出，例子简单易懂，也算是对java基础的一种回顾吧。  public static void main(String[] args) {       String orginalCharts=&quot;a8sGb9eu%7Ad5@D3cF6fB,10Hg2CI4f&quot;;        String upperca">
 <meta property="og:locale" content="ZH_CN">
-<meta property="og:updated_time" content="2018-05-25T07:51:40.994Z">
+<meta property="og:updated_time" content="2018-05-25T07:56:10.534Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JAVA之模拟Syslog客户端UDP发送日志">
-<meta name="twitter:description" content="import java.io.*;     import java.net.*;      /**  * UDP客户端程序，用于对服务端发送数据，并接收服务端的回应信息.     * Title: SyslogClient  * Description: none  * Copyright @ 2012~2015 HP  * @author Tony  * @createDate 2">
+<meta name="twitter:title" content="JAVA基础之任意字符分组排序">
+<meta name="twitter:description" content="这是一段将任意字符分组排序输出的代码，里面共分为大写字母、小写字母、符号、数字等四类字符的排序输出，例子简单易懂，也算是对java基础的一种回顾吧。  public static void main(String[] args) {       String orginalCharts=&quot;a8sGb9eu%7Ad5@D3cF6fB,10Hg2CI4f&quot;;        String upperca">
   
     <link rel="alternate" href="/atom.xml" title="张涛的博客·XIAOUR" type="application/atom+xml">
   
@@ -121,7 +121,7 @@
     <div class="container post-box">
         <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
             <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
-                <strong>JAVA之模拟Syslog客户端UDP发送日志</strong>
+                <strong>JAVA基础之任意字符分组排序</strong>
             </h1>
             
             <div class="is-flex align-center">
@@ -132,121 +132,54 @@
             
                 <div>
                     
-                         <a class="tag is-post-tag" href="/tags/UDP-Syslog/">UDP,Syslog</a>
+                         <a class="tag is-post-tag" href="/tags/JAVA/">JAVA</a>
                     
                 </div>
             
         </div>
         <div class="content" style="overflow: auto">
-            <pre>
-<code>
+            <p>这是一段将任意字符分组排序输出的代码，里面共分为大写字母、小写字母、符号、数字等四类字符的排序输出，例子简单易懂，也算是对java基础的一种回顾吧。</p>
+<pre><code>
+public static void main(String[] args) {  
+    String orginalCharts="a8sGb9eu%7Ad5@D3cF6fB,10Hg2CI4f";  
 
-    import java.io.*;    
-import java.net.*;    
+    String uppercaseCharts="";//大写字母  
 
-/**
- * UDP客户端程序，用于对服务端发送数据，并接收服务端的回应信息.   
- * Title: SyslogClient
- * Description: none
- * Copyright @ 2012~2015 HP<br>
- * @author Tony
- * @createDate 2015年8月18日
- * @version v1.0
- */
-public class SyslogClient {    
-    private byte[] buffer = new byte[1024];    
+    String lowercaseCharts="";//小写字母  
 
-    private DatagramSocket ds = null;    
+    String digitCharts="";//数字  
 
-    /**  
-     * 构造函数，创建UDP客户端  
-     * @throws Exception  
-     */    
-    public SyslogClient() throws Exception {    
-        ds = new DatagramSocket();    
-    }    
+    String symbolCharts="";//符号  
 
-    /**  
-     * 设置超时时间，该方法必须在bind方法之后使用.  
-     * @param timeout 超时时间  
-     * @throws Exception  
-     */    
-    public final void setSoTimeout(final int timeout) throws Exception {    
-        ds.setSoTimeout(timeout);    
-    }    
+    char[] c=orginalCharts.toCharArray();  
+    //排序  
+    Arrays.sort(c);  
 
-    /**  
-     * 获得超时时间.  
-     * @return 返回超时时间  
-     * @throws Exception  
-     */    
-    public final int getSoTimeout() throws Exception {    
-        return ds.getSoTimeout();    
-    }    
+    for(char s:c){  
 
-    public final DatagramSocket getSocket() {    
-        return ds;    
-    }    
+        if(Character.isUpperCase(s)){  
 
-    /**  
-     * 接收从指定的服务端发回的数据.  
-     * @param lhost 服务端主机  
-     * @param lport 服务端端口  
-     * @return 返回从指定的服务端发回的数据.  
-     * @throws Exception  
-     */    
-    public final String receive(final String lhost, final int lport)    
-            throws Exception {    
-        DatagramPacket dp = new DatagramPacket(buffer, buffer.length);    
-        ds.receive(dp);    
-        String info = new String(dp.getData(), 0, dp.getLength());    
-        return info;    
-    }    
+            uppercaseCharts+=s;  
 
-    /**  
-     * 关闭udp连接.  
-     */    
-    public final void close() {    
-        try {    
-            ds.close();    
-        } catch (Exception ex) {    
-            ex.printStackTrace();    
-        }    
-    }   
+        }else if(Character.isLowerCase(s)){  
 
-    /**  
-     * 向指定的服务端发送数据信息.  
-     * @param host 服务器主机地址  
-     * @param port 服务端端口  
-     * @param bytes 发送的数据信息  
-     * @return 返回构造后俄数据报  
-     * @throws IOException  
-     */    
-    public final DatagramPacket send(final String host, final int port,    
-            final byte[] bytes) throws IOException {    
-        DatagramPacket dp = new DatagramPacket(bytes, bytes.length, InetAddress    
-                .getByName(host), port);    
-        ds.send(dp);    
-        return dp;    
-    }
+            lowercaseCharts+=s;  
 
-    /**  
-     * 测试客户端发包和接收回应信息的方法.  
-     * @param args  
-     * @throws Exception  
-     */    
-    public static void main(String[] args) throws Exception {    
-        SyslogClient client = new SyslogClient();   
-        //这里我们在本机测试，使用本机IP即可
-        String serverHost = "127.0.0.1";    
-        int serverPort = 514;    
-        client.send(serverHost, serverPort, ("什么都可以的接收参数").getBytes());   
-        String info = client.receive(serverHost, serverPort);    
-        System.out.println("服务端回应数据：" + info);
-    }    
+        }else if(Character.isDigit(s)){  
+
+            digitCharts+=s;  
+
+        }else{  
+
+            symbolCharts+=s;  
+
+        }  
+    }  
+    System.out.println(uppercaseCharts+"\n"+lowercaseCharts+"\n"+digitCharts+"\n"+symbolCharts);  
+
 }  
-</code>
-</pre>
+</code></pre>
+
 
         </div>
         <div class="post-reply">
