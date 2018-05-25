@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html class="full-height">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <title>JAVA之模拟Syslog客户端UDP发送日志 | 张涛的博客·XIAOUR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="import java.io.*;     import java.net.*;      /**  * UDP客户端程序，用于对服务端发送数据，并接收服务端的回应信息.     * Title: SyslogClient  * Description: none  * Copyright @ 2012~2015 HP  * @author Tony  * @createDate 2">
+<meta name="keywords" content="UDP,Syslog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA之模拟Syslog客户端UDP发送日志">
+<meta property="og:url" content="http://totube.cn/2018/05/02/cjhlnr8mo0000d0fyarayyjey/index.html">
+<meta property="og:site_name" content="张涛的博客·XIAOUR">
+<meta property="og:description" content="import java.io.*;     import java.net.*;      /**  * UDP客户端程序，用于对服务端发送数据，并接收服务端的回应信息.     * Title: SyslogClient  * Description: none  * Copyright @ 2012~2015 HP  * @author Tony  * @createDate 2">
+<meta property="og:locale" content="ZH_CN">
+<meta property="og:updated_time" content="2018-05-25T07:31:08.667Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA之模拟Syslog客户端UDP发送日志">
+<meta name="twitter:description" content="import java.io.*;     import java.net.*;      /**  * UDP客户端程序，用于对服务端发送数据，并接收服务端的回应信息.     * Title: SyslogClient  * Description: none  * Copyright @ 2012~2015 HP  * @author Tony  * @createDate 2">
+  
+    <link rel="alternate" href="/atom.xml" title="张涛的博客·XIAOUR" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+  
+
+</head>
+
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">张涛</XIAOUR></span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                Home
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
+    }
+
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
+    }
+
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
+    }
+</style>
+<header>
+    <!--<div id="header_box" class="header-box"></div>-->
+</header>
+<section>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>JAVA之模拟Syslog客户端UDP发送日志</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://avatars2.githubusercontent.com/u/3699646?s=460&v=4">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> 张涛</XIAOUR></span>
+                <span class="post-date sub-title">at: 2018-05-02</span>
+            </div>
+            
+                <div>
+                    
+                         <a class="tag is-post-tag" href="/tags/UDP-Syslog/">UDP,Syslog</a>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <pre>
+<code>
+
+    import java.io.*;    
+import java.net.*;    
+
+/**
+ * UDP客户端程序，用于对服务端发送数据，并接收服务端的回应信息.   
+ * Title: SyslogClient
+ * Description: none
+ * Copyright @ 2012~2015 HP<br>
+ * @author Tony
+ * @createDate 2015年8月18日
+ * @version v1.0
+ */
+public class SyslogClient {    
+    private byte[] buffer = new byte[1024];    
+
+    private DatagramSocket ds = null;    
+
+    /**  
+     * 构造函数，创建UDP客户端  
+     * @throws Exception  
+     */    
+    public SyslogClient() throws Exception {    
+        ds = new DatagramSocket();    
+    }    
+
+    /**  
+     * 设置超时时间，该方法必须在bind方法之后使用.  
+     * @param timeout 超时时间  
+     * @throws Exception  
+     */    
+    public final void setSoTimeout(final int timeout) throws Exception {    
+        ds.setSoTimeout(timeout);    
+    }    
+
+    /**  
+     * 获得超时时间.  
+     * @return 返回超时时间  
+     * @throws Exception  
+     */    
+    public final int getSoTimeout() throws Exception {    
+        return ds.getSoTimeout();    
+    }    
+
+    public final DatagramSocket getSocket() {    
+        return ds;    
+    }    
+
+    /**  
+     * 接收从指定的服务端发回的数据.  
+     * @param lhost 服务端主机  
+     * @param lport 服务端端口  
+     * @return 返回从指定的服务端发回的数据.  
+     * @throws Exception  
+     */    
+    public final String receive(final String lhost, final int lport)    
+            throws Exception {    
+        DatagramPacket dp = new DatagramPacket(buffer, buffer.length);    
+        ds.receive(dp);    
+        String info = new String(dp.getData(), 0, dp.getLength());    
+        return info;    
+    }    
+
+    /**  
+     * 关闭udp连接.  
+     */    
+    public final void close() {    
+        try {    
+            ds.close();    
+        } catch (Exception ex) {    
+            ex.printStackTrace();    
+        }    
+    }   
+
+    /**  
+     * 向指定的服务端发送数据信息.  
+     * @param host 服务器主机地址  
+     * @param port 服务端端口  
+     * @param bytes 发送的数据信息  
+     * @return 返回构造后俄数据报  
+     * @throws IOException  
+     */    
+    public final DatagramPacket send(final String host, final int port,    
+            final byte[] bytes) throws IOException {    
+        DatagramPacket dp = new DatagramPacket(bytes, bytes.length, InetAddress    
+                .getByName(host), port);    
+        ds.send(dp);    
+        return dp;    
+    }
+
+    /**  
+     * 测试客户端发包和接收回应信息的方法.  
+     * @param args  
+     * @throws Exception  
+     */    
+    public static void main(String[] args) throws Exception {    
+        SyslogClient client = new SyslogClient();   
+        //这里我们在本机测试，使用本机IP即可
+        String serverHost = "127.0.0.1";    
+        int serverPort = 514;    
+        client.send(serverHost, serverPort, ("什么都可以的接收参数").getBytes());   
+        String info = client.receive(serverHost, serverPort);    
+        System.out.println("服务端回应数据：" + info);
+    }    
+}  
+</code>
+</pre>
+
+        </div>
+        <div class="post-reply">
+            
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTE4Ni81NzUz">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+            
+            
+        </div>
+    </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
+
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        Copyright © 张涛·XIAOUR 2018 
+        <br>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/search_core.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>
