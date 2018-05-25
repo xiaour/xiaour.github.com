@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html class="full-height">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <title>简单好用-JAVA使用POI解析Excel | 张涛的博客·XIAOUR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="相信使用POI的目前已经非常多了，我这边提供一个非常简单便利又通用的POI解析工具类，代码最后有示例代码。可以按照本文直接使用。  import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.IOException; import java.io.InputStream; import j">
+<meta name="keywords" content="JAVA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单好用-JAVA使用POI解析Excel">
+<meta property="og:url" content="http://totube.cn/2018/05/02/cjhlo9p4g0009gufy9mslj2i2/index.html">
+<meta property="og:site_name" content="张涛的博客·XIAOUR">
+<meta property="og:description" content="相信使用POI的目前已经非常多了，我这边提供一个非常简单便利又通用的POI解析工具类，代码最后有示例代码。可以按照本文直接使用。  import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.IOException; import java.io.InputStream; import j">
+<meta property="og:locale" content="ZH_CN">
+<meta property="og:updated_time" content="2018-05-25T07:51:40.997Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简单好用-JAVA使用POI解析Excel">
+<meta name="twitter:description" content="相信使用POI的目前已经非常多了，我这边提供一个非常简单便利又通用的POI解析工具类，代码最后有示例代码。可以按照本文直接使用。  import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.IOException; import java.io.InputStream; import j">
+  
+    <link rel="alternate" href="/atom.xml" title="张涛的博客·XIAOUR" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+  
+
+</head>
+
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">张涛</XIAOUR></span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                Home
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                Home
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
+    }
+
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
+    }
+
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
+    }
+</style>
+<header>
+    <!--<div id="header_box" class="header-box"></div>-->
+</header>
+<section>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>简单好用-JAVA使用POI解析Excel</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://avatars2.githubusercontent.com/u/3699646?s=460&v=4">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> 张涛</XIAOUR></span>
+                <span class="post-date sub-title">at: 2018-05-02</span>
+            </div>
+            
+                <div>
+                    
+                         <a class="tag is-post-tag" href="/tags/JAVA/">JAVA</a>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <p>相信使用POI的目前已经非常多了，我这边提供一个非常简单便利又通用的POI解析工具类，代码最后有示例代码。可以按照本文直接使用。</p>
+<pre><code>
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFDateUtil;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+
+/**
+ * 
+ * Title: ExcelReader<br>
+ * Description: 可以读取xls,xlsx等文件<br>
+ * Copyright @ 2012~2016 xiaour.github.com<span style="font-size: 1em;"> .All rights reserved.<br></span>
+ * @author  小鱼儿
+ * @createDate 2016年8月23日
+ * @version v1.0
+ */
+public class ExcelReader {
+    private POIFSFileSystem fs;
+    private HSSFWorkbook wb;
+    private HSSFSheet sheet;
+    private HSSFRow row;
+    private static Logger logger = LogManager.getLogger(ExcelReader.class);
+
+    private String fileFullPath;
+
+    private int sheetNo;
+
+
+
+    public ExcelReader(String fileFullPath, int sheetNo) {
+        super();
+        this.fileFullPath = fileFullPath;
+        this.sheetNo = sheetNo;
+    }
+
+    /**
+     * 读取Excel数据内容
+     * @param InputStream 
+     * @param sheetNo sheet 页号
+     * @return Map 包含单元格数据内容的Map对象
+     */
+    public List<map<string,object>> readExcel() {
+        logger.info("开始解析xls...");
+        sheetNo--;//从1开始及从0开始
+        InputStream is = null;
+        try {
+            is = new FileInputStream(fileFullPath);
+        } catch (FileNotFoundException e1) {
+            logger.error(e1);
+        }
+        Map<string,object> dataMap = null;
+        List<map<string,object>> dataList= new ArrayList<>();
+        String value = "";
+         try {
+             fs = new POIFSFileSystem(is);
+             wb = new HSSFWorkbook(fs);
+         } catch (IOException e) {
+             logger.error(e);
+         }
+         sheet = wb.getSheetAt(sheetNo);
+         row = sheet.getRow(0);
+         // 标题总列数
+         int colNum = row.getPhysicalNumberOfCells();
+         String[] keyArray = new String[colNum];
+         for (int i = 0; i < colNum; i++) {
+             keyArray[i] = getCellFormatValue(row.getCell((short) i));
+         }
+        int rowNum = sheet.getLastRowNum();
+        // 正文内容应该从第二行开始,第一行为表头的标题
+        for (int i = 2; i <= rownum;="" i++)="" {="" datamap="new" hashmap<="">();
+            row = sheet.getRow(i);
+            if(row!=null){
+                int j = 0;
+                while (j < colNum) {
+                    //这里把列循环到Map
+                    if(row.getCell((short) j)!=null){
+                    value = getCellFormatValue(row.getCell((short) j)).trim();
+                    dataMap.put(keyArray[j],value);
+                    }
+                    j++;
+                }
+                value = "";
+                dataList.add(dataMap);
+            }
+        }
+        logger.info("解析xls完成...");
+        try {
+            if(is!=null)
+            is.close();
+        } catch (IOException e) {
+            logger.error(e.toString());
+        }
+        return dataList;
+    }
+
+    /**
+     * 根据HSSFCell类型设置数据
+     * @param cell
+     * @return
+     */
+    private String getCellFormatValue(HSSFCell cell) {
+        String cellvalue = "";
+        if (cell != null) {
+            // 判断当前Cell的Type
+            switch (cell.getCellType()) {
+            // 如果当前Cell的Type为NUMERIC
+            case HSSFCell.CELL_TYPE_NUMERIC:
+            case HSSFCell.CELL_TYPE_FORMULA: {
+                // 判断当前的cell是否为Date
+                if (HSSFDateUtil.isCellDateFormatted(cell)) {
+                    Date date = cell.getDateCellValue();
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    cellvalue = sdf.format(date);
+                }
+                // 如果是纯数字
+                else {
+                    // 取得当前Cell的数值
+                    DecimalFormat df = new DecimalFormat("0");  
+                    String dfStr = df.format(cell.getNumericCellValue()); 
+                    cellvalue = dfStr;
+                }
+                break;
+            }
+            // 如果当前Cell的Type为STRIN
+            case HSSFCell.CELL_TYPE_STRING:
+                // 取得当前的Cell字符串
+                cellvalue = cell.getRichStringCellValue().getString();
+                break;
+            // 默认的Cell值
+            default:
+                cellvalue = " ";
+            }
+        } else {
+            cellvalue = "";
+        }
+        return cellvalue;
+
+    }
+
+    public static void main(String[] args) {
+            List<map<string, object="">> dataList;
+            // 对读取Excel表格标题测试
+            ExcelReader excelReader = new ExcelReader("D:\\okcoin-2016-08-3XZS.xls",1);
+            dataList = excelReader.readExcel();
+            for(Map<string,object> theMap:dataList){
+                System.out.println(theMap);
+            }
+    }
+}
+</string,object></map<string,></=></map<string,object></string,object></map<string,object></code></pre>
+
+        </div>
+        <div class="post-reply">
+            
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTE4Ni81NzUz">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+            
+            
+        </div>
+    </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
+
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        Copyright © 张涛·XIAOUR 2018 
+        <br>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/search_core.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>
