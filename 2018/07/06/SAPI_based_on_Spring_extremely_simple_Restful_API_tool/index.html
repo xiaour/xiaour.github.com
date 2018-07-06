@@ -6,20 +6,20 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   
-  <title>JAVA之模拟Syslog客户端UDP发送日志 | 张涛的博客·XIAOUR</title>
+  <title>SAPI 基于Spring极度简单的Restful API工具 | 张涛的博客·XIAOUR</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="import java.io.*;     import java.net.*;      /**  * UDP客户端程序，用于对服务端发送数据，并接收服务端的回应信息.     * Title: SyslogClient  * Description: none  * Copyright @ 2012~2015 HP  * @author Tony  * @createDate 2">
-<meta name="keywords" content="UDP,Syslog">
+  <meta name="description" content="SAPI是一个及其精简的Restful API输出工具，诞生的背景是基于目前微服务开发接口，很多中小型项目开发人员在对接口测试时不仅需要使用JUnit等进行业务接口测试，还需要对API进行自测。所以SAPI很好的解决了开发人员需要一个一个参数的往接口测试工具填写调试的反复过程。 目前SAPI只需要开发人员引入stater后再启动类加入一行文件即可。下面我们直接看看使用时是什么样的。 1.下载并打包">
+<meta name="keywords" content="JAVA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA之模拟Syslog客户端UDP发送日志">
-<meta property="og:url" content="http://totube.cn/2018/05/02/cjhlpb6zi0002nzfykcsi7z01/index.html">
+<meta property="og:title" content="SAPI 基于Spring极度简单的Restful API工具">
+<meta property="og:url" content="http://totube.cn/2018/07/06/SAPI_based_on_Spring_extremely_simple_Restful_API_tool/index.html">
 <meta property="og:site_name" content="张涛的博客·XIAOUR">
-<meta property="og:description" content="import java.io.*;     import java.net.*;      /**  * UDP客户端程序，用于对服务端发送数据，并接收服务端的回应信息.     * Title: SyslogClient  * Description: none  * Copyright @ 2012~2015 HP  * @author Tony  * @createDate 2">
+<meta property="og:description" content="SAPI是一个及其精简的Restful API输出工具，诞生的背景是基于目前微服务开发接口，很多中小型项目开发人员在对接口测试时不仅需要使用JUnit等进行业务接口测试，还需要对API进行自测。所以SAPI很好的解决了开发人员需要一个一个参数的往接口测试工具填写调试的反复过程。 目前SAPI只需要开发人员引入stater后再启动类加入一行文件即可。下面我们直接看看使用时是什么样的。 1.下载并打包">
 <meta property="og:locale" content="ZH_CN">
-<meta property="og:updated_time" content="2018-05-25T08:21:40.824Z">
+<meta property="og:updated_time" content="2018-07-06T09:24:01.718Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JAVA之模拟Syslog客户端UDP发送日志">
-<meta name="twitter:description" content="import java.io.*;     import java.net.*;      /**  * UDP客户端程序，用于对服务端发送数据，并接收服务端的回应信息.     * Title: SyslogClient  * Description: none  * Copyright @ 2012~2015 HP  * @author Tony  * @createDate 2">
+<meta name="twitter:title" content="SAPI 基于Spring极度简单的Restful API工具">
+<meta name="twitter:description" content="SAPI是一个及其精简的Restful API输出工具，诞生的背景是基于目前微服务开发接口，很多中小型项目开发人员在对接口测试时不仅需要使用JUnit等进行业务接口测试，还需要对API进行自测。所以SAPI很好的解决了开发人员需要一个一个参数的往接口测试工具填写调试的反复过程。 目前SAPI只需要开发人员引入stater后再启动类加入一行文件即可。下面我们直接看看使用时是什么样的。 1.下载并打包">
   
     <link rel="alternate" href="/atom.xml" title="张涛的博客·XIAOUR" type="application/atom+xml">
   
@@ -29,9 +29,9 @@
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/css/common.css">
-<link rel="stylesheet" href="/css/nav.css">
-<link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="../../../../css/common.css">
+<link rel="stylesheet" href="../../../../css/nav.css">
+<link rel="stylesheet" href="../../../../css/layout.css">
   
 
 </head>
@@ -58,7 +58,7 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
             </a>
             
-            <a class="nav-item" href="/">
+            <a class="nav-item" href="../../../../index.html">
                 Home
             </a>
             
@@ -70,7 +70,7 @@
         </span>
         <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
             
-            <a class="nav-item flex-1" href="/">
+            <a class="nav-item flex-1" href="../../../../index.html">
                 Home
             </a>
             
@@ -121,132 +121,50 @@
     <div class="container post-box">
         <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
             <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
-                <strong>JAVA之模拟Syslog客户端UDP发送日志</strong>
+                <strong>SAPI 基于Spring极度简单的Restful API工具</strong>
             </h1>
             
             <div class="is-flex align-center">
                 <img class="post-avatar" src="https://avatars2.githubusercontent.com/u/3699646?s=460&v=4">
                 <span style="padding:0 10px;"> <span class="sub-title">By</span> 张涛</XIAOUR></span>
-                <span class="post-date sub-title">at: 2018-05-02</span>
+                <span class="post-date sub-title">at: 2018-07-06</span>
             </div>
             
                 <div>
                     
-                         <a class="tag is-post-tag" href="/tags/UDP-Syslog/">UDP,Syslog</a>
+                         <a class="tag is-post-tag" href="/tags/JAVA/">JAVA</a>
                     
                 </div>
             
         </div>
         <div class="content" style="overflow: auto">
-            <pre>
-<code>
+            <p>SAPI是一个及其精简的Restful API输出工具，诞生的背景是基于目前微服务开发接口，很多中小型项目开发人员在对接口测试时不仅需要使用JUnit等进行业务接口测试，还需要对API进行自测。所以SAPI很好的解决了开发人员需要一个一个参数的往接口测试工具填写调试的反复过程。</p>
+<p>目前SAPI只需要开发人员引入stater后再启动类加入一行文件即可。下面我们直接看看使用时是什么样的。</p>
+<h2 id="1-下载并打包Jar配置好POM"><a href="#1-下载并打包Jar配置好POM" class="headerlink" title="1.下载并打包Jar配置好POM"></a>1.下载并打包Jar配置好POM</h2><pre><code>
+<dependency>
+   <groupid>com.github.xiaour</groupid>
+   <artifactid>xiaour.springboot.sapi.starter</artifactid>
+   <version>1.0</version>
+   <scope>system</scope>
+   <systempath>${project.basedir}/libs/xiaour.springboot.sapi.starter-1.0.jar</systempath>
+</dependency>
+</code></pre>
 
-    import java.io.*;    
-import java.net.*;    
+<h2 id="启动类加入注解Sapi和ServletComponentScan"><a href="#启动类加入注解Sapi和ServletComponentScan" class="headerlink" title="启动类加入注解Sapi和ServletComponentScan"></a>启动类加入注解Sapi和ServletComponentScan</h2><pre><code>
+@Sapi(controllers = {"com.example.demo.ctrl","com.example.demo.ctrl2"})
+@ServletComponentScan(basePackages = {"com.github.xiaour.api_scanner.servlet"})
+@ComponentScan
+@SpringBootApplication
+public class DemoApplication {
 
-/**
- * UDP客户端程序，用于对服务端发送数据，并接收服务端的回应信息.   
- * Title: SyslogClient
- * Description: none
- * Copyright @ 2012~2015 HP<br>
- * @author Tony
- * @createDate 2015年8月18日
- * @version v1.0
- */
-public class SyslogClient {    
-    private byte[] buffer = new byte[1024];    
+   public static void main(String[] args) {
+      SpringApplication.run(DemoApplication.class, args);
+   }
+}
+</code></pre>
 
-    private DatagramSocket ds = null;    
-
-    /**  
-     * 构造函数，创建UDP客户端  
-     * @throws Exception  
-     */    
-    public SyslogClient() throws Exception {    
-        ds = new DatagramSocket();    
-    }    
-
-    /**  
-     * 设置超时时间，该方法必须在bind方法之后使用.  
-     * @param timeout 超时时间  
-     * @throws Exception  
-     */    
-    public final void setSoTimeout(final int timeout) throws Exception {    
-        ds.setSoTimeout(timeout);    
-    }    
-
-    /**  
-     * 获得超时时间.  
-     * @return 返回超时时间  
-     * @throws Exception  
-     */    
-    public final int getSoTimeout() throws Exception {    
-        return ds.getSoTimeout();    
-    }    
-
-    public final DatagramSocket getSocket() {    
-        return ds;    
-    }    
-
-    /**  
-     * 接收从指定的服务端发回的数据.  
-     * @param lhost 服务端主机  
-     * @param lport 服务端端口  
-     * @return 返回从指定的服务端发回的数据.  
-     * @throws Exception  
-     */    
-    public final String receive(final String lhost, final int lport)    
-            throws Exception {    
-        DatagramPacket dp = new DatagramPacket(buffer, buffer.length);    
-        ds.receive(dp);    
-        String info = new String(dp.getData(), 0, dp.getLength());    
-        return info;    
-    }    
-
-    /**  
-     * 关闭udp连接.  
-     */    
-    public final void close() {    
-        try {    
-            ds.close();    
-        } catch (Exception ex) {    
-            ex.printStackTrace();    
-        }    
-    }   
-
-    /**  
-     * 向指定的服务端发送数据信息.  
-     * @param host 服务器主机地址  
-     * @param port 服务端端口  
-     * @param bytes 发送的数据信息  
-     * @return 返回构造后俄数据报  
-     * @throws IOException  
-     */    
-    public final DatagramPacket send(final String host, final int port,    
-            final byte[] bytes) throws IOException {    
-        DatagramPacket dp = new DatagramPacket(bytes, bytes.length, InetAddress    
-                .getByName(host), port);    
-        ds.send(dp);    
-        return dp;    
-    }
-
-    /**  
-     * 测试客户端发包和接收回应信息的方法.  
-     * @param args  
-     * @throws Exception  
-     */    
-    public static void main(String[] args) throws Exception {    
-        SyslogClient client = new SyslogClient();   
-        //这里我们在本机测试，使用本机IP即可
-        String serverHost = "127.0.0.1";    
-        int serverPort = 514;    
-        client.send(serverHost, serverPort, ("什么都可以的接收参数").getBytes());   
-        String info = client.receive(serverHost, serverPort);    
-        System.out.println("服务端回应数据：" + info);
-    }    
-}  
-</code>
-</pre>
+<p>这里说明一下Sapi的controllers是当前项目中需要被输入API的Controller路径，有多个的话配置多个即可。ServletComponentScan中的com.github.xiaour.api_scanner.servlet路径不要忽略。到这里我们的配置几乎就全部完成了。怎么样？是不是相当简单了。</p>
+<h2 id="3-如何使用Sapi？"><a href="#3-如何使用Sapi？" class="headerlink" title="3.如何使用Sapi？"></a>3.如何使用Sapi？</h2><p>启动项目后在浏览器打开地址 如<a href="http://127.0.0.1:8080/sapi" target="_blank" rel="noopener">http://127.0.0.1:8080/sapi</a> 即可打开Sapi的接口列表页面；每个接口上都有一个绿色的运行按钮，点击运行按钮就会弹出接口详细内容页面。点击Send就可以调试接口了。</p>
 
         </div>
         <div class="post-reply">
@@ -307,8 +225,8 @@ public class SyslogClient {
   </div>
 </footer>
 
-<script src="/js/search_core.js"></script>
-<script src="/js/script.js"></script>
+<script src="../../../../js/search_core.js"></script>
+<script src="../../../../js/script.js"></script>
 
 </body>
 </html>
