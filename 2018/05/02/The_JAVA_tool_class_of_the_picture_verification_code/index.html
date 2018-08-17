@@ -1,404 +1,366 @@
 <!DOCTYPE html>
-<html class="full-height">
+<html>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- PACE Progress Bar START -->
   
-  <title>JAVA之图片验证码的工具类 | 张涛的博客·XIAOUR</title>
+    <script src="../../../../js/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>java之图片验证码的工具类 | 张涛的博客·XIAOUR</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我们平时开发时经常会遇到需要图片验证码，基础的验证码包括了数字、字母、甚至可能有汉字。下面我给出一个简单的工具类。   import java.awt.Color; import java.awt.Font; import java.awt.Graphics2D; import java.awt.image.BufferedImage; import java.io.File; import ja">
+  
+  <meta name="keywords" content="验证码" />
+  
+  
+  
+  
+  <meta name="description" content="我们平时开发时经常会遇到需要图片验证码，基础的验证码包括了数字、字母、甚至可能有汉字。下面我给出一个简单的工具类。">
 <meta name="keywords" content="验证码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAVA之图片验证码的工具类">
 <meta property="og:url" content="http://totube.cn/2018/05/02/The_JAVA_tool_class_of_the_picture_verification_code/index.html">
 <meta property="og:site_name" content="张涛的博客·XIAOUR">
-<meta property="og:description" content="我们平时开发时经常会遇到需要图片验证码，基础的验证码包括了数字、字母、甚至可能有汉字。下面我给出一个简单的工具类。   import java.awt.Color; import java.awt.Font; import java.awt.Graphics2D; import java.awt.image.BufferedImage; import java.io.File; import ja">
+<meta property="og:description" content="我们平时开发时经常会遇到需要图片验证码，基础的验证码包括了数字、字母、甚至可能有汉字。下面我给出一个简单的工具类。">
 <meta property="og:locale" content="ZH_CN">
-<meta property="og:updated_time" content="2018-07-06T09:26:52.464Z">
+<meta property="og:updated_time" content="2018-08-17T03:43:17.388Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA之图片验证码的工具类">
-<meta name="twitter:description" content="我们平时开发时经常会遇到需要图片验证码，基础的验证码包括了数字、字母、甚至可能有汉字。下面我给出一个简单的工具类。   import java.awt.Color; import java.awt.Font; import java.awt.Graphics2D; import java.awt.image.BufferedImage; import java.io.File; import ja">
+<meta name="twitter:description" content="我们平时开发时经常会遇到需要图片验证码，基础的验证码包括了数字、字母、甚至可能有汉字。下面我给出一个简单的工具类。">
   
     <link rel="alternate" href="/atom.xml" title="张涛的博客·XIAOUR" type="application/atom+xml">
   
-  
-    <link rel="icon" href="/favicon.png">
-  
+  <link rel="icon" href="/css/images/favicon.ico">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="../../../../css/common.css">
-<link rel="stylesheet" href="../../../../css/nav.css">
-<link rel="stylesheet" href="../../../../css/layout.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="../../../../css/style.css">
+
+  <script src="../../../../js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
   
 
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../../../css/my.css">
+  <!-- Google Adsense -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "",
+          enable_page_level_ads: true
+      });
+  </script>
 </head>
 
-<body>
-  <header id="navbar" class="overflow-hidden">
-  <div class="container">
-    <nav class="nav">
-         <div class="nav-left">
-            <a href="/" class="nav-item" style="font-size: 20px;">
-              <span class="logo">张涛</XIAOUR></span>'s Blog
-            </a>
-         </div>
-        <div class="nav-center is-hidden position-relative" id="search_container">
-            <div class="nav-item full-width full-height">
-                <i class="fa fa-search has-padding" aria-hidden="true"></i>
-                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
-                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
-            </div>
-            <div id="search_result"></div>
-        </div>
-        <div class="nav-right nav-menu">
-            <a class="nav-item" id="search">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </a>
-            
-            <a class="nav-item" href="../../../../index.html">
-                Home
-            </a>
-            
-        </div>
-        <span class="nav-toggle" id="navMenuDropdown">
-            <span></span>
-            <span></span>
-            <span></span>
-        </span>
-        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
-            
-            <a class="nav-item flex-1" href="../../../../index.html">
-                Home
-            </a>
-            
-        </div>
-    </nav>
-  </div>
-</header>
-
-  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
-      <div class="main-inner-content">
-          <!--博文页面-->
-
-<style>
-    .header-box {
-        height: 370px;
-        filter: blur(10px);
-        background-size: cover;
-        background-color: lightsteelblue;
-    }
-
-    .post-box {
-        padding: 15px;
-        padding-top: 60px;
-        min-height: 80vh;
-        margin-top: -200px;
-        border-radius: 4px;
-        background-color: rgba(255,255,255,.8);
-    }
-
-    .post-avatar {
-        height: 30px;
-        width: 30px;
-        border-radius: 50%;
-    }
-
-    .flow-chart {
-        text-align: center;
-    }
-
-    img[alt="post-cover"] {
-        display: none;
-    }
-</style>
-<header>
-    <!--<div id="header_box" class="header-box"></div>-->
-</header>
-<section>
-    <div class="container post-box">
-        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
-            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
-                <strong>JAVA之图片验证码的工具类</strong>
-            </h1>
-            
-            <div class="is-flex align-center">
-                <img class="post-avatar" src="https://avatars2.githubusercontent.com/u/3699646?s=460&v=4">
-                <span style="padding:0 10px;"> <span class="sub-title">By</span> 张涛</XIAOUR></span>
-                <span class="post-date sub-title">at: 2018-05-02</span>
-            </div>
-            
-                <div>
-                    
-                         <a class="tag is-post-tag" href="/tags/验证码/">验证码</a>
-                    
-                </div>
-            
-        </div>
-        <div class="content" style="overflow: auto">
-            <p>我们平时开发时经常会遇到需要图片验证码，基础的验证码包括了数字、字母、甚至可能有汉字。下面我给出一个简单的工具类。</p>
-<pre><code>
-
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Date;
-import java.util.Random;
-import javax.imageio.ImageIO;
-
-/**
- * 验证码生成器
- */
-public class ValidateCode {
-
-    // 图片的宽度。
-    private int width = 160;
-    // 图片的高度。
-    private int height = 40;
-    // 验证码字符个数
-    private int codeCount = 5;
-    // 验证码干扰线数
-    private int lineCount = 150;
-    // 验证码
-    private static String code = null;
-    // 验证码图片Buffer
-    private BufferedImage buffImg = null;
-
-    private char[] codeSequence = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R',
-            'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '2', '3', '4', '5', '6', '7', '8', '9' };
-
-    public ValidateCode() {
-        this.createCode();
-    }
-
-    /**
-     * 
-     * @param width
-     *            图片宽
-     * @param height
-     *            图片高
-     */
-    public ValidateCode(int width, int height) {
-        this.width = width;
-        this.height = height;
-        this.createCode();
-    }
-
-    /**
-     * 
-     * @param width
-     *            图片宽
-     * @param height
-     *            图片高
-     * @param codeCount
-     *            字符个数
-     * @param lineCount
-     *            干扰线条数
-     */
-    public ValidateCode(int width, int height, int codeCount, int lineCount) {
-        this.width = width;
-        this.height = height;
-        this.codeCount = codeCount;
-        this.lineCount = lineCount;
-        this.createCode();
-    }
-
-    public void createCode() {
-        int x = 0, fontHeight = 0, codeY = 0;
-        int red = 0, green = 0, blue = 0;
-
-        x = width / (codeCount + 1);// 每个字符的宽度
-        fontHeight = height - 2;// 字体的高度
-        codeY = height - 3;
-
-        // 图像buffer
-        buffImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        Graphics2D g = buffImg.createGraphics();
-        // 生成随机数
-        Random random = new Random();
-        // 将图像填充为白色
-        g.setColor(Color.WHITE);
-        g.fillRect(0, 0, width, height);
-        // 创建字体
-        ImgFontByte imgFont = new ImgFontByte();
-        Font font = imgFont.getFont(fontHeight);
-        g.setFont(font);
-        for (int i = 0; i < lineCount; i++) {
-            int xs = random.nextInt(width);
-            int ys = random.nextInt(height);
-            int xe = xs + random.nextInt(width / 8);
-            int ye = ys + random.nextInt(height / 8);
-            red = random.nextInt(255);
-            green = random.nextInt(255);
-            blue = random.nextInt(255);
-            g.setColor(new Color(red, green, blue));
-            g.drawLine(xs, ys, xe, ye);
-        }
-        // randomCode记录随机产生的验证码
-        StringBuffer randomCode = new StringBuffer();
-        // 随机产生codeCount个字符的验证码。
-        for (int i = 0; i < codeCount; i++) {
-            String strRand = String.valueOf(codeSequence[random.nextInt(codeSequence.length)]);
-            // 产生随机的颜色值，让输出的每个字符的颜色值都将不同。
-            red = random.nextInt(255);
-            green = random.nextInt(255);
-            blue = random.nextInt(255);
-            g.setColor(new Color(red, green, blue));
-            g.drawString(strRand, (i + 1) * x, codeY);
-            // 将产生的四个随机数组合在一起。
-            randomCode.append(strRand);
-        }
-        // 将四位数字的验证码保存到Session中。
-        code = randomCode.toString();
-    }
-
-    public void write(String path,String fileName) throws IOException {
-        File folder = new File(path);
-        if(!folder.exists()){
-            folder.mkdirs();
-        }
-        OutputStream sos = new FileOutputStream(path+fileName);
-        this.write(sos);
-    }
-
-    public void write(OutputStream sos) throws IOException {
-        ImageIO.write(buffImg, "png", sos);
-        sos.close();
-    }
-
-    public BufferedImage getBuffImg() {
-        return buffImg;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public static void main(String[] args) {  
-        ValidateCode vCode = new ValidateCode(120,40,5,50);  
-        try {  
-            String path="D:\\report\\image\\code\\";  
-            System.out.println(vCode.getCode()+" >"+path);  
-            vCode.write(path,new Date().getTime()+".png");  
-        } catch (IOException e) {  
-            e.printStackTrace();
-        }  
-     }
-
-}
-</code></pre>
-
-<p>下面这个类主要是用作字体的设置，大家也可以直接拿过来用。</p>
-<pre><code>
-import java.awt.Font;
-import java.io.ByteArrayInputStream;
-
-public class ImgFontByte {
-     public Font getFont(int fontHeight){  
-            try {  
-                Font baseFont = Font.createFont(Font.ITALIC, new ByteArrayInputStream(hex2byte(getFontByteStr()))); 
-                return baseFont.deriveFont(Font.PLAIN, fontHeight);  
-            } catch (Exception e) {  
-                return new Font("Consola",Font.PLAIN, fontHeight);  
-            }  
-        }  
-
-        private  byte[] hex2byte(String str) {   
-            if (str == null)  
-                return null;  
-            str = str.trim();  
-            int len = str.length();  
-            if (len == 0 || len % 2 == 1)  
-                return null;  
-            byte[] b = new byte[len / 2];  
-            try {  
-                for (int i = 0; i < str.length(); i += 2) {  
-                    b[i/2] = (byte) Integer.decode("0x" + str.substring(i, i + 2)).intValue();  
-                }  
-                return b;  
-            } catch (Exception e) {  
-                return null;  
-            }  
-        } 
-
-     /** 
-      * ttf字体文件的十六进制字符串 
-      * @return 
-      */  
-     private String getFontByteStr(){ 
-         return null;  
-     }  
-}
-
-</code></pre>
-        </div>
-        <div class="post-reply">
-            
-                <!-- 来必力City版安装代码 -->
-                <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTE4Ni81NzUz">
-                    <script type="text/javascript">
-                        (function(d, s) {
-                            var j, e = d.getElementsByTagName(s)[0];
-
-                            if (typeof LivereTower === 'function') { return; }
-
-                            j = d.createElement(s);
-                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                            j.async = true;
-
-                            e.parentNode.insertBefore(j, e);
-                        })(document, 'script');
-                    </script>
-                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-                </div>
-                <!-- City版安装代码已完成 -->
-            
-            
-        </div>
-    </div>
-</section>
 <script>
-    // 获取第一张图, 用以当封面背景图
-    var img = document.querySelectorAll('img')[1]
+var themeMenus = {};
 
-    if (img) {
-        var header_box = document.querySelector('#header_box')
-        header_box.style.backgroundImage = 'url('+ img.src +')'
-    }
+  themeMenus["../../../../index.html"] = "Home"; 
+
+  themeMenus["../../../../archives"] = "Archives"; 
+
+  themeMenus["../../../../categories"] = "Categories"; 
+
 </script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="张涛的博客·XIAOUR" rel="home"> 张涛的博客·XIAOUR </a>
+            
+          </h1>
+
+          
+            <div class="site-description">张涛的博客·XIAOUR，JAVA技术博客</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">Categories</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
       </div>
   </div>
-  <style>
-  #footer {
-    min-height: 10vh;
-    background: black;
-    color: #fff;
-  }
+</header>
 
-  #footer a {
-    color: #e1e1e1;
-  }
-</style>
-<footer id="footer" class="has-text-centered is-flex center">
-  <div class="container has-padding">
-    <div>
-      <div>
-        Copyright © 张涛·XIAOUR 2018 
-        <br>
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
       </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-The_JAVA_tool_class_of_the_picture_verification_code" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      JAVA之图片验证码的工具类
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="" class="article-date">
+	  <time datetime="2018-05-02T02:48:43.000Z" itemprop="datePublished">五月 2, 2018</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
     </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们平时开发时经常会遇到需要图片验证码，基础的验证码包括了数字、字母、甚至可能有汉字。下面我给出一个简单的工具类。<a id="more"></a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.awt.Color;</span><br><span class="line"><span class="keyword">import</span> java.awt.Font;</span><br><span class="line"><span class="keyword">import</span> java.awt.Graphics2D;</span><br><span class="line"><span class="keyword">import</span> java.awt.image.BufferedImage;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">import</span> javax.imageio.ImageIO;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 验证码生成器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ValidateCode</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 图片的宽度。</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> width = <span class="number">160</span>;</span><br><span class="line">    <span class="comment">// 图片的高度。</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> height = <span class="number">40</span>;</span><br><span class="line">    <span class="comment">// 验证码字符个数</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> codeCount = <span class="number">5</span>;</span><br><span class="line">    <span class="comment">// 验证码干扰线数</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> lineCount = <span class="number">150</span>;</span><br><span class="line">    <span class="comment">// 验证码</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String code = <span class="keyword">null</span>;</span><br><span class="line">    <span class="comment">// 验证码图片Buffer</span></span><br><span class="line">    <span class="keyword">private</span> BufferedImage buffImg = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">char</span>[] codeSequence = &#123; <span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>, <span class="string">'E'</span>, <span class="string">'F'</span>, <span class="string">'G'</span>, <span class="string">'H'</span>, <span class="string">'J'</span>, <span class="string">'K'</span>, <span class="string">'L'</span>, <span class="string">'M'</span>, <span class="string">'N'</span>, <span class="string">'P'</span>, <span class="string">'Q'</span>, <span class="string">'R'</span>,</span><br><span class="line">            <span class="string">'S'</span>, <span class="string">'T'</span>, <span class="string">'U'</span>, <span class="string">'V'</span>, <span class="string">'W'</span>, <span class="string">'X'</span>, <span class="string">'Y'</span>, <span class="string">'Z'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>, <span class="string">'5'</span>, <span class="string">'6'</span>, <span class="string">'7'</span>, <span class="string">'8'</span>, <span class="string">'9'</span> &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ValidateCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.createCode();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> width</span></span><br><span class="line"><span class="comment">     *            图片宽</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> height</span></span><br><span class="line"><span class="comment">     *            图片高</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ValidateCode</span><span class="params">(<span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.width = width;</span><br><span class="line">        <span class="keyword">this</span>.height = height;</span><br><span class="line">        <span class="keyword">this</span>.createCode();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> width</span></span><br><span class="line"><span class="comment">     *            图片宽</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> height</span></span><br><span class="line"><span class="comment">     *            图片高</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> codeCount</span></span><br><span class="line"><span class="comment">     *            字符个数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> lineCount</span></span><br><span class="line"><span class="comment">     *            干扰线条数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ValidateCode</span><span class="params">(<span class="keyword">int</span> width, <span class="keyword">int</span> height, <span class="keyword">int</span> codeCount, <span class="keyword">int</span> lineCount)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.width = width;</span><br><span class="line">        <span class="keyword">this</span>.height = height;</span><br><span class="line">        <span class="keyword">this</span>.codeCount = codeCount;</span><br><span class="line">        <span class="keyword">this</span>.lineCount = lineCount;</span><br><span class="line">        <span class="keyword">this</span>.createCode();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">0</span>, fontHeight = <span class="number">0</span>, codeY = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> red = <span class="number">0</span>, green = <span class="number">0</span>, blue = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        x = width / (codeCount + <span class="number">1</span>);<span class="comment">// 每个字符的宽度</span></span><br><span class="line">        fontHeight = height - <span class="number">2</span>;<span class="comment">// 字体的高度</span></span><br><span class="line">        codeY = height - <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 图像buffer</span></span><br><span class="line">        buffImg = <span class="keyword">new</span> BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);</span><br><span class="line">        Graphics2D g = buffImg.createGraphics();</span><br><span class="line">        <span class="comment">// 生成随机数</span></span><br><span class="line">        Random random = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="comment">// 将图像填充为白色</span></span><br><span class="line">        g.setColor(Color.WHITE);</span><br><span class="line">        g.fillRect(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">        <span class="comment">// 创建字体</span></span><br><span class="line">        ImgFontByte imgFont = <span class="keyword">new</span> ImgFontByte();</span><br><span class="line">        Font font = imgFont.getFont(fontHeight);</span><br><span class="line">        g.setFont(font);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lineCount; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> xs = random.nextInt(width);</span><br><span class="line">            <span class="keyword">int</span> ys = random.nextInt(height);</span><br><span class="line">            <span class="keyword">int</span> xe = xs + random.nextInt(width / <span class="number">8</span>);</span><br><span class="line">            <span class="keyword">int</span> ye = ys + random.nextInt(height / <span class="number">8</span>);</span><br><span class="line">            red = random.nextInt(<span class="number">255</span>);</span><br><span class="line">            green = random.nextInt(<span class="number">255</span>);</span><br><span class="line">            blue = random.nextInt(<span class="number">255</span>);</span><br><span class="line">            g.setColor(<span class="keyword">new</span> Color(red, green, blue));</span><br><span class="line">            g.drawLine(xs, ys, xe, ye);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// randomCode记录随机产生的验证码</span></span><br><span class="line">        StringBuffer randomCode = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="comment">// 随机产生codeCount个字符的验证码。</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; codeCount; i++) &#123;</span><br><span class="line">            String strRand = String.valueOf(codeSequence[random.nextInt(codeSequence.length)]);</span><br><span class="line">            <span class="comment">// 产生随机的颜色值，让输出的每个字符的颜色值都将不同。</span></span><br><span class="line">            red = random.nextInt(<span class="number">255</span>);</span><br><span class="line">            green = random.nextInt(<span class="number">255</span>);</span><br><span class="line">            blue = random.nextInt(<span class="number">255</span>);</span><br><span class="line">            g.setColor(<span class="keyword">new</span> Color(red, green, blue));</span><br><span class="line">            g.drawString(strRand, (i + <span class="number">1</span>) * x, codeY);</span><br><span class="line">            <span class="comment">// 将产生的四个随机数组合在一起。</span></span><br><span class="line">            randomCode.append(strRand);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 将四位数字的验证码保存到Session中。</span></span><br><span class="line">        code = randomCode.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(String path,String fileName)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        File folder = <span class="keyword">new</span> File(path);</span><br><span class="line">        <span class="keyword">if</span>(!folder.exists())&#123;</span><br><span class="line">            folder.mkdirs();</span><br><span class="line">        &#125;</span><br><span class="line">        OutputStream sos = <span class="keyword">new</span> FileOutputStream(path+fileName);</span><br><span class="line">        <span class="keyword">this</span>.write(sos);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(OutputStream sos)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        ImageIO.write(buffImg, <span class="string">"png"</span>, sos);</span><br><span class="line">        sos.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> BufferedImage <span class="title">getBuffImg</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> buffImg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> code;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line">        ValidateCode vCode = <span class="keyword">new</span> ValidateCode(<span class="number">120</span>,<span class="number">40</span>,<span class="number">5</span>,<span class="number">50</span>);  </span><br><span class="line">        <span class="keyword">try</span> &#123;  </span><br><span class="line">            String path=<span class="string">"D:\\report\\image\\code\\"</span>;  </span><br><span class="line">            System.out.println(vCode.getCode()+<span class="string">" &gt;"</span>+path);  </span><br><span class="line">            vCode.write(path,<span class="keyword">new</span> Date().getTime()+<span class="string">".png"</span>);  </span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;  </span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;  </span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面这个类主要是用作字体的设置，大家也可以直接拿过来用。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.awt.Font;</span><br><span class="line"><span class="keyword">import</span> java.io.ByteArrayInputStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImgFontByte</span> </span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> Font <span class="title">getFont</span><span class="params">(<span class="keyword">int</span> fontHeight)</span></span>&#123;  </span><br><span class="line">            <span class="keyword">try</span> &#123;  </span><br><span class="line">                Font baseFont = Font.createFont(Font.ITALIC, <span class="keyword">new</span> ByteArrayInputStream(hex2byte(getFontByteStr()))); </span><br><span class="line">                <span class="keyword">return</span> baseFont.deriveFont(Font.PLAIN, fontHeight);  </span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> Font(<span class="string">"Consola"</span>,Font.PLAIN, fontHeight);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">          </span><br><span class="line">        <span class="keyword">private</span>  <span class="keyword">byte</span>[] hex2byte(String str) &#123;   </span><br><span class="line">            <span class="keyword">if</span> (str == <span class="keyword">null</span>)  </span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;  </span><br><span class="line">            str = str.trim();  </span><br><span class="line">            <span class="keyword">int</span> len = str.length();  </span><br><span class="line">            <span class="keyword">if</span> (len == <span class="number">0</span> || len % <span class="number">2</span> == <span class="number">1</span>)  </span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;  </span><br><span class="line">            <span class="keyword">byte</span>[] b = <span class="keyword">new</span> <span class="keyword">byte</span>[len / <span class="number">2</span>];  </span><br><span class="line">            <span class="keyword">try</span> &#123;  </span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i += <span class="number">2</span>) &#123;  </span><br><span class="line">                    b[i/<span class="number">2</span>] = (<span class="keyword">byte</span>) Integer.decode(<span class="string">"0x"</span> + str.substring(i, i + <span class="number">2</span>)).intValue();  </span><br><span class="line">                &#125;  </span><br><span class="line">                <span class="keyword">return</span> b;  </span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125; </span><br><span class="line">        </span><br><span class="line">     <span class="comment">/** </span></span><br><span class="line"><span class="comment">      * ttf字体文件的十六进制字符串 </span></span><br><span class="line"><span class="comment">      * <span class="doctag">@return</span> </span></span><br><span class="line"><span class="comment">      */</span>  </span><br><span class="line">     <span class="function"><span class="keyword">private</span> String <span class="title">getFontByteStr</span><span class="params">()</span></span>&#123; </span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">null</span>;  </span><br><span class="line">     &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/验证码/">验证码</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="../../../../js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+            
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../The_SpringMVC_configuration_is_too_much_Try_SpringBoot/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          SpringMVC配置太多？试试SpringBoot
+        
+      </div>
+    </a>
+  
+  
+    <a href="../../01/Syslog_client_UDP_sends_logs/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JAVA之模拟Syslog客户端UDP发送日志</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav">None</ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 张涛的博客·XIAOUR All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
   </div>
 </footer>
 
-<script src="../../../../js/search_core.js"></script>
-<script src="../../../../js/script.js"></script>
 
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="../../../../js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="../../../../categories" class="mobile-nav-link">Categories</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../../../js/scripts.js"></script>
+<script src="../../../../js/bootstrap.js"></script>
+<script src="../../../../js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
 </body>
 </html>

@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-<html class="full-height">
+<html>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="js/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
   
   <title>张涛的博客·XIAOUR</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
   <meta name="description" content="张涛的博客·XIAOUR，JAVA技术博客">
 <meta name="keywords" content="张涛的博客·XIAOUR，JAVA技术博客，Spring Mvc，SpringBoot">
 <meta property="og:type" content="website">
@@ -22,684 +33,916 @@
   
     <link rel="alternate" href="/atom.xml" title="张涛的博客·XIAOUR" type="application/atom+xml">
   
-  
-    <link rel="icon" href="/favicon.png">
-  
+  <link rel="icon" href="/css/images/favicon.ico">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/nav.css">
-<link rel="stylesheet" href="css/layout.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
   
 
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/my.css">
+  <!-- Google Adsense -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "",
+          enable_page_level_ads: true
+      });
+  </script>
 </head>
 
-<body>
-  <header id="navbar" class="overflow-hidden">
-  <div class="container">
-    <nav class="nav">
-         <div class="nav-left">
-            <a href="/" class="nav-item" style="font-size: 20px;">
-              <span class="logo">张涛</XIAOUR></span>'s Blog
-            </a>
-         </div>
-        <div class="nav-center is-hidden position-relative" id="search_container">
-            <div class="nav-item full-width full-height">
-                <i class="fa fa-search has-padding" aria-hidden="true"></i>
-                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
-                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+<script>
+var themeMenus = {};
+
+  themeMenus["index.html"] = "Home"; 
+
+  themeMenus["archives"] = "Archives"; 
+
+  themeMenus["categories"] = "Categories"; 
+
+</script>
+
+
+  <body>
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="张涛的博客·XIAOUR" rel="home"> 张涛的博客·XIAOUR </a>
+            
+          </h1>
+
+          
+            <div class="site-description">张涛的博客·XIAOUR，JAVA技术博客</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="index.html">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="categories">Categories</a> </li>
+                    
+              </ul>
             </div>
-            <div id="search_result"></div>
-        </div>
-        <div class="nav-right nav-menu">
-            <a class="nav-item" id="search">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </a>
-            
-            <a class="nav-item" href="index.html">
-                Home
-            </a>
-            
-        </div>
-        <span class="nav-toggle" id="navMenuDropdown">
-            <span></span>
-            <span></span>
-            <span></span>
-        </span>
-        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
-            
-            <a class="nav-item flex-1" href="index.html">
-                Home
-            </a>
-            
-        </div>
-    </nav>
+          </nav>
+
+
+      </div>
   </div>
 </header>
 
-  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
-      <div class="main-inner-content">
-          <style>
-    .post-hover:hover {
-        box-shadow: inset 0 0 100px #000;
-        transition: box-shadow .2s;
-    }
 
-    .sub-post-container .post-hover:hover h3 {
-        text-decoration: underline gray;
-    }
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
 
-
-    .primary-item-main {
-        height: 330px;
-        background-size: cover;
-    }
-
-    .primary-container .title,
-    .primary-container .sub-title,
-    .primary-container .post-content-text,
-    .primary-container .date {
-        color: #fff;
-    }
-
-    .post-content-text {
-        color: #f1f1f1!important;
-    }
-
-    .primary-container .post-hover {
-        background: black;
-    }
-
-    .content-bg-mask {
-        background: rgba(0,0,0,.4);
-    }
-
-</style>
-
-<div style="background: #f5f8f9;">
-    <div id="main-container" class="container" style="padding-top: 20px;">
-        <div class="is-flex main-content justify-center">
-            <section class="column is-9">
-                
-<div class="primary-container content-box is-flex-desktop clear-padding bottom-line" style="margin-bottom: 25px;">
-    <div class="column  is-7-desktop">
-        <a href="/2018/07/06/SAPI_based_on_Spring_extremely_simple_Restful_API_tool/">
-            <div class="full-height post-hover"
-                 style="
-                         background-image: url('');
-                         height: 350px;
-                         background-size: cover;
-                         background-repeat: no-repeat;
-                         ">
-                    <div class=" is-flex flex-column center content has-text-centered full-height has-padding content-bg-mask">
-                        <h1 class="title text-shadow" style="margin-bottom: 15px;">
-                            SAPI 基于Spring极度简单的Restful API工具
-                        </h1>
-                        <div>
-                        
-                            `
-                                <span class="tag is-post-tag">JAVA</span>
-                            
-                        
-                        </div>
-                        <p class="post-content-text is-marginless has-padding text-shadow">
-                            SAPI是一个及其精简的Restful API输出工具，诞生的背景是基于目前微服务开发接口，很多中小型项目开发人员在对接口测试时不仅需要使用JUnit等进行业务接口测试，还需要对API进行自测。所以SAPI很好的解决了开发人员需要一个一..
-                        </p>
-                        <p class="date text-shadow">2018-07-06</p>
-                        <button class="button is-info is-small">Read More</button>
-                    </div>
-            </div>
-        </a>
-    </div>
-    <div class="column is-5 is-hidden-touch" style="padding-left: 0;">
-        <div class="full-height is-flex flex-column justify-space-between" style="min-height: 350px;">
-            
-                
-<a class="post-hover" href="/2018/05/23/Springboot_integrated_Kafka/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('https://img.colabug.com/2017/08/199a9b646a346f1559f79850f2f0a65f.png')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                Springboot集成Kafka
-            </h3>
-            
-            
-            <span class="tag is-post-tag">JAVA,Springboot</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                
-Kafka是一种高吞吐量的分布式发布订阅消息系统，有如下特性： 通过O(1)的磁盘数据结构提供..
-            </p>
-            <p class="date text-shadow is-marginless">2018-05-23</p>
-        </div>
-    </div>
-</a>
-            
-            
-                
-<a class="post-hover" href="/2018/05/02/The_UDP_of_JAVA_receives_Syslog/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('http://img.sccnn.com/bimg/338/40696.jpg')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                JAVA之服务端UDP接收Syslog
-            </h3>
-            
-            
-            <span class="tag is-post-tag">UDP,Syslog</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                
-
-import java.io.IOException;
-import java.net.Da..
-            </p>
-            <p class="date text-shadow is-marginless">2018-05-02</p>
-        </div>
-    </div>
-</a>
-            
-        </div>
-    </div>
-    <div class="column is-12 is-hidden-desktop">
-        
-        
-<a class="post-hover" href="/2018/05/23/Springboot_integrated_Kafka/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('https://img.colabug.com/2017/08/199a9b646a346f1559f79850f2f0a65f.png')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                Springboot集成Kafka
-            </h3>
-            
-            
-            <span class="tag is-post-tag">JAVA,Springboot</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                
-Kafka是一种高吞吐量的分布式发布订阅消息系统，有如下特性： 通过O(1)的磁盘数据结构提供..
-            </p>
-            <p class="date text-shadow is-marginless">2018-05-23</p>
-        </div>
-    </div>
-</a>
-        
-        
-        
-<a class="post-hover" href="/2018/05/02/The_UDP_of_JAVA_receives_Syslog/" style="height: 48.5%">
-    <div class="content is-hidden-touch full-height overflow-hidden" style="background-image: url('http://img.sccnn.com/bimg/338/40696.jpg')">
-        <div class="content-bg-mask full-width full-height has-padding">
-            <h3 class="title is-marginless text-shadow">
-                JAVA之服务端UDP接收Syslog
-            </h3>
-            
-            
-            <span class="tag is-post-tag">UDP,Syslog</span>
-            
-            
-            <p class="sub-title text-shadow"></p>
-            <p class="is-marginless text-shadow post-content-text">
-                
-
-import java.io.IOException;
-import java.net.Da..
-            </p>
-            <p class="date text-shadow is-marginless">2018-05-02</p>
-        </div>
-    </div>
-</a>
-        
-    </div>
-</div>
-
-                    
-                    
-                
-                    
-                        <div class="content-box  is-hidden-desktop" style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/05/23/Springboot_integrated_Kafka/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('https://img.colabug.com/2017/08/199a9b646a346f1559f79850f2f0a65f.png')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>Springboot集成Kafka</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">JAVA,Springboot</span>
-                                            
-                                        </p>
-                                        <p>
-                                            
-Kafka是一种高吞吐量的分布式发布订阅消息系统，有如下特性： 通过O(1)的磁盘数据结构提供消息的持久化，这种结构对于即使数以TB的消息存储也能够保持长时间的稳定性能。高吞吐量：即使是非常普通的硬件Kafka也可以支持每秒数百万的消息。支持通过Kafka服务器和消费机集群来分区消息。支持Hadoop并行数据加载。
-Springboot的基本搭建和配置..
-                                        </p>
-                                        <p>2018-05-23</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  is-hidden-desktop" style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/05/02/The_UDP_of_JAVA_receives_Syslog/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('http://img.sccnn.com/bimg/338/40696.jpg')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>JAVA之服务端UDP接收Syslog</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">UDP,Syslog</span>
-                                            
-                                        </p>
-                                        <p>
-                                            
-
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Sock..
-                                        </p>
-                                        <p>2018-05-02</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/05/02/Syslog_client_UDP_sends_logs/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>JAVA之模拟Syslog客户端UDP发送日志</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">UDP,Syslog</span>
-                                            
-                                        </p>
-                                        <p>
-                                            
-
-
-    import java.io.*;    
-import java.net.*;    
-
-/**
- * UDP客户端程序，用于对服务端发送数据，并接收服务端的回应信息.   
- * Title: SyslogClient
- * Description: none
- * Copyright @ 2012~2015 HP
- * @author..
-                                        </p>
-                                        <p>2018-05-02</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/05/02/Group_sorting_of_arbitrary_character_based_on_JAVA/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>JAVA基础之任意字符分组排序</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">JAVA</span>
-                                            
-                                        </p>
-                                        <p>
-                                            这是一段将任意字符分组排序输出的代码，里面共分为大写字母、小写字母、符号、数字等四类字符的排序输出，例子简单易懂，也算是对java基础的一种回顾吧。
-
-public static void main(String[] args) {  
-    String orginalCharts="a8sGb9eu%7Ad5@D3cF6fB,10Hg2CI4f";..
-                                        </p>
-                                        <p>2018-05-02</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/05/02/JAVA_to_use_POI_to_parse_Excel/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>简单好用-JAVA使用POI解析Excel</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">JAVA</span>
-                                            
-                                        </p>
-                                        <p>
-                                            相信使用POI的目前已经非常多了，我这边提供一个非常简单便利又通用的POI解析工具类，代码最后有示例代码。可以按照本文直接使用。
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io..
-                                        </p>
-                                        <p>2018-05-02</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/05/02/The_SpringMVC_configuration_is_too_much_Try_SpringBoot/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                    <div class="column is-4-desktop is-5-tablet post-avatar is-hidden-mobile"
-                                         style="margin: 10px; background-size: cover;background-image: url('http://cxyclub.cn/Upload/Images/2015042621/E6ED9F3DF3D8F9AE.jpg')">
-                                    </div>
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>SpringMVC配置太多？试试SpringBoot</h3>
-                                        
-                                        <p>
-                                            
-                                        </p>
-                                        <p>
-                                            SpringMVC相信大家已经不再陌生了，大家可能对于Spring的各种XML配置已经产生了厌恶的感觉，Spring官方发布的Springboot 已经很长时间了，Springboot是一款“约定优于配置”的轻量级框架；Springboot首先解决的就是各种繁琐的XML配置，你可以不用任何XML配置，进行web服务的搭建，其次是Springboot本身就..
-                                        </p>
-                                        <p>2018-05-02</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                    
-                        <div class="content-box  " style="margin-bottom: 27px;">
-                            <a class="post-hover" href="/2018/05/02/The_JAVA_tool_class_of_the_picture_verification_code/">
-                            <div class="columns" style="min-height: 230px;">
-                                
-                                <div class="column is-8-desktop post-content is-flex align-center">
-                                    <div class="content">
-                                        <h3>JAVA之图片验证码的工具类</h3>
-                                        
-                                        <p>
-                                            
-                                                <span class="tag is-post-tag">验证码</span>
-                                            
-                                        </p>
-                                        <p>
-                                            我们平时开发时经常会遇到需要图片验证码，基础的验证码包括了数字、字母、甚至可能有汉字。下面我给出一个简单的工具类。
-
-
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import j..
-                                        </p>
-                                        <p>2018-05-02</p>
-                                        <button class="button is-small">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        </div>
-                    
-                
-                <!--翻頁-->
-                <nav class="pagination is-flex" style="justify-content: flex-end">
-                    
-                        
-                        
-                    
-                </nav>
-            </section>
-            
-                <style>
-    /*user info start*/
-    .user-info {
-        padding: 15px 0 0;
-    }
-
-    .user-info .avatar {
-        width: 155px;
-        height: 155px;
-        border-radius: 50%;
-    }
-
-    .sns-container {
-        flex-wrap: wrap;
-    }
-
-    .sns-container a{
-        color: black;
-    }
-    /*user info end*/
-
-    /*Tag start*/
-    #tag_cloud .tags-item{
-        display: inline-block;
-        color: #000;
-        border: 1px solid gray;
-
-        margin: 4px 2px;
-        padding: 0 4px;
-        border-radius: 6px;
-    }
-    /*Tag end*/
-
-    /*Site box start*/
-    .site-box {
-        height: 60px;
-    }
-    /*Site box end*/
-
-    .category-list-item,
-    .archive-list-item {
-        display: flex;
-        margin-bottom: 4px;
-        justify-content: space-between;
-    }
-    .category-list-link,
-    .archive-list-link {
-        color: black;
-    }
-
-    .category-list-count,
-    .archive-list-count {
-        width: 32px;
-        text-align: center;
-        border-radius: 4px;
-        color: #fff;
-        background-color: gray;
-    }
-</style>
-<aside class="column is-hidden-touch is-3" style="max-width: 280px; min-width: 230px">
-    <div class="content-box user-info">
-        <div class="has-padding">
-            <header class="has-text-centered">
-                <img class="avatar" src="https://avatars2.githubusercontent.com/u/3699646?s=460&amp;v=4">
-            </header>
-            <section class="has-text-centered">
-                <h3><strong>张涛&lt;/XIAOUR&gt;</strong></h3>
-                <p class="sub-title">不靠颜值靠才华的程序员</p>
-                
-                <p class="is-flex center" style=" color: gray">
-                    <i class="fa fa-map-marker" style="padding: 5px"></i>
-                    北京
-                </p>
-                
-            </section>
-        </div>
-        <div class="top-line">
-            <ul class="sns-container justify-center is-flex has-padding">
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-                <li>
-                    <a target="_blank" href="https://github.com/xiaour">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                    </a>
-                </li>
-                
-
-                
-                <li>
-                    <a target="_blank" href="https://avatars2.githubusercontent.com/u/3699646?s=460&amp;v=4">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-user-circle fa-stack-1x fa-inverse"></i>
-                                        </span>
-                    </a>
-                </li>
-                
-            </ul>
-        </div>
-    </div>
-    <div class="content-box">
-        <!--post数量和tag category 数量-->
-        <div class="site-box is-flex">
-            <div class="flex-1 is-flex flex-column center full-height right-line">
-                <strong>8</strong>
-                <p>Posts</p>
-            </div>
-            <div class="flex-1 is-flex flex-column center full-height">
-                <strong>4</strong>
-                <p>Tags</p>
-            </div>
-        </div>
-    </div>
-    <div class="content-inner content-box">
-        
-        <div class="content-inner">
-            最近正在做Springboot系列教程，实例代码都传到Github了，有兴趣的点击👆的Github 图标可以Star⭐️。
-            <span class="tag is-post-tag">加微信号 Ghost-999 共同进步</span>
-        </div>
-    </div>
-    <div id='tag_cloud' class="content-inner content-box">
-        <div class="has-text-centered">
-            <strong>Tags</strong>
-        </div>
-        <div class="content-inner is-flex flex-wrap justify-space-between">
-            
-                <a class="tags-item" href="tags/JAVA/" title="JAVA" rel="3">
-                    JAVA
-                </a>
-            
-                <a class="tags-item" href="tags/JAVA-Springboot/" title="JAVA,Springboot" rel="1">
-                    JAVA,Springboot
-                </a>
-            
-                <a class="tags-item" href="tags/UDP-Syslog/" title="UDP,Syslog" rel="2">
-                    UDP,Syslog
-                </a>
-            
-                <a class="tags-item" href="tags/验证码/" title="验证码" rel="1">
-                    验证码
-                </a>
-            
-        </div>
-    </div>
-    
-    <!--<div class="content-inner content-box">
-        <div class="has-text-centered">
-            <strong>Categories</strong>
-        </div>
-        <div class="content-inner">
-            
-        </div>
-    </div>-->
-    <div class="content-inner content-box">
-        <div class="has-text-centered">
-            <strong>Archives</strong>
-        </div>
-        <div class="content-inner">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/07/">七月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/05/">五月 2018</a><span class="archive-list-count">7</span></li></ul>
-        </div>
-    </div>
-</aside>
-            
-        </div>
-    </div>
-</div>
-
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
       </div>
+
   </div>
-  <style>
-  #footer {
-    min-height: 10vh;
-    background: black;
-    color: #fff;
-  }
 
-  #footer a {
-    color: #e1e1e1;
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
   }
-</style>
-<footer id="footer" class="has-text-centered is-flex center">
-  <div class="container has-padding">
-    <div>
-      <div>
-        Copyright © 张涛·XIAOUR 2018 
-        <br>
-      </div>
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main">
+  
+    <article id="post-SpringbootRocketMQ"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2018/08/16/SpringbootRocketMQ/">Springboot集成RocketMQ</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="2018/08/16/SpringbootRocketMQ/" class="article-date">
+	  <time datetime="2018-08-16T08:33:12.000Z" itemprop="datePublished">八月 16, 2018</time>
+	</a>
+
+      
     </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div class="entry-thumbnail">
+            <a href="2018/08/16/SpringbootRocketMQ/"><img width="250" height="175" src="http://rocketmq.apache.org/assets/images/bright/rmq-feature-lowlatency.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+        有一段时间没有写东西了，最近工作和生活上发生了一些变化，总算是有点时间来歇一歇自己想要分享的，2018年转眼过去一多半了，想来自己今年好像也没有太多的积累。尽可能的让自己能够多做一些技术上的事情。
+从开篇写Springboot系列的教程已经一年多了，Springboot
+
+        
+          <p class="article-more-link">
+            <a href="2018/08/16/SpringbootRocketMQ/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-SAPI_based_on_Spring_extremely_simple_Restful_API_tool"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2018/07/06/SAPI_based_on_Spring_extremely_simple_Restful_API_tool/">SAPI 基于Spring极度简单的Restful API工具</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="2018/07/06/SAPI_based_on_Spring_extremely_simple_Restful_API_tool/" class="article-date">
+	  <time datetime="2018-07-06T09:23:30.000Z" itemprop="datePublished">七月 6, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+          SAPI是一个及其精简的Restful API输出工具，诞生的背景是基于目前微服务开发接口，很多中小型项目开发人员在对接口测试时不仅需要使用JUnit等进行业务接口测试，还需要对API进行自测。所以SAPI很好的解决了开发人员需要一个一个参数的往接口测试工具填写调试的反复过程。
+目前SAPI只需要开发人员引入stater后再启动类加入一行文件即可。下面我们直接看看使用时是什么样的。
+          
+
+        
+          <p class="article-more-link">
+            <a href="2018/07/06/SAPI_based_on_Spring_extremely_simple_Restful_API_tool/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/JAVA/">JAVA</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-Springboot_integrated_Kafka"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2018/05/23/Springboot_integrated_Kafka/">Springboot集成Kafka</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="2018/05/23/Springboot_integrated_Kafka/" class="article-date">
+	  <time datetime="2018-05-23T02:43:12.000Z" itemprop="datePublished">五月 23, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+          Kafka是一种高吞吐量的分布式发布订阅消息系统，有如下特性： 通过O(1)的磁盘数据结构提供消息的持久化，这种结构对于即使数以TB的消息存储也能够保持长时间的稳定性能。高吞吐量：即使是非常普通的硬件Kafka也可以支持每秒数百万的消息。支持通过Kafka服务器和消费机集群来分区消息。支持Hadoop并行数据加载。
+          
+
+        
+          <p class="article-more-link">
+            <a href="2018/05/23/Springboot_integrated_Kafka/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/JAVA-Springboot/">JAVA,Springboot</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-The_SpringMVC_configuration_is_too_much_Try_SpringBoot"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2018/05/02/The_SpringMVC_configuration_is_too_much_Try_SpringBoot/">SpringMVC配置太多？试试SpringBoot</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="2018/05/02/The_SpringMVC_configuration_is_too_much_Try_SpringBoot/" class="article-date">
+	  <time datetime="2018-05-02T03:43:43.000Z" itemprop="datePublished">五月 2, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div class="entry-thumbnail">
+            <a href="2018/05/02/The_SpringMVC_configuration_is_too_much_Try_SpringBoot/"><img width="250" height="175" src="http://cxyclub.cn/Upload/Images/2015042621/E6ED9F3DF3D8F9AE.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+        SpringMVC相信大家已经不再陌生了，大家可能对于Spring的各种XML配置已经产生了厌恶的感觉，Spring官方发布的Springboot 已经很长时间了，Springboot是一款“约定优于配置”的轻量级框架；Springboot首先解决的就是各种繁琐的XML配置，你可以不用任何XML配置
+
+        
+          <p class="article-more-link">
+            <a href="2018/05/02/The_SpringMVC_configuration_is_too_much_Try_SpringBoot/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-The_JAVA_tool_class_of_the_picture_verification_code"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2018/05/02/The_JAVA_tool_class_of_the_picture_verification_code/">JAVA之图片验证码的工具类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="2018/05/02/The_JAVA_tool_class_of_the_picture_verification_code/" class="article-date">
+	  <time datetime="2018-05-02T02:48:43.000Z" itemprop="datePublished">五月 2, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+          我们平时开发时经常会遇到需要图片验证码，基础的验证码包括了数字、字母、甚至可能有汉字。下面我给出一个简单的工具类。
+          
+
+        
+          <p class="article-more-link">
+            <a href="2018/05/02/The_JAVA_tool_class_of_the_picture_verification_code/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/验证码/">验证码</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-Syslog_client_UDP_sends_logs"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2018/05/01/Syslog_client_UDP_sends_logs/">JAVA之模拟Syslog客户端UDP发送日志</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="2018/05/01/Syslog_client_UDP_sends_logs/" class="article-date">
+	  <time datetime="2018-05-01T07:58:40.000Z" itemprop="datePublished">五月 1, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+          UDP客户端程序，用于对服务端发送数据，并接收服务端的回应信息.，话不多说 show me your code!
+          
+
+        
+          <p class="article-more-link">
+            <a href="2018/05/01/Syslog_client_UDP_sends_logs/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/UDP-Syslog/">UDP,Syslog</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-Group_sorting_of_arbitrary_character_based_on_JAVA"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2018/04/22/Group_sorting_of_arbitrary_character_based_on_JAVA/">JAVA基础之任意字符分组排序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="2018/04/22/Group_sorting_of_arbitrary_character_based_on_JAVA/" class="article-date">
+	  <time datetime="2018-04-22T07:48:43.000Z" itemprop="datePublished">四月 22, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+          这是一段将任意字符分组排序输出的代码，里面共分为大写字母、小写字母、符号、数字等四类字符的排序输出，例子简单易懂，也算是对java基础的一种回顾吧。
+          
+
+        
+          <p class="article-more-link">
+            <a href="2018/04/22/Group_sorting_of_arbitrary_character_based_on_JAVA/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/JAVA/">JAVA</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-The_UDP_of_JAVA_receives_Syslog"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2018/04/11/The_UDP_of_JAVA_receives_Syslog/">JAVA之服务端UDP接收Syslog</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="2018/04/11/The_UDP_of_JAVA_receives_Syslog/" class="article-date">
+	  <time datetime="2018-04-11T08:00:38.000Z" itemprop="datePublished">四月 11, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div class="entry-thumbnail">
+            <a href="2018/04/11/The_UDP_of_JAVA_receives_Syslog/"><img width="250" height="175" src="http://img.sccnn.com/bimg/338/40696.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+        JAVA之服务端UDP接收Syslog,这部分代码可以结合上一篇“JAVA之模拟Syslog客户端UDP发送日志”进行测试。
+
+        
+          <p class="article-more-link">
+            <a href="2018/04/11/The_UDP_of_JAVA_receives_Syslog/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/UDP-Syslog/">UDP,Syslog</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+    <article id="post-JAVA_to_use_POI_to_parse_Excel"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2018/04/02/JAVA_to_use_POI_to_parse_Excel/">简单好用-JAVA使用POI解析Excel</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="2018/04/02/JAVA_to_use_POI_to_parse_Excel/" class="article-date">
+	  <time datetime="2018-04-02T07:43:43.000Z" itemprop="datePublished">四月 2, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+          相信使用POI的目前已经非常多了，我这边提供一个非常简单便利又通用的POI解析工具类，代码最后有示例代码。可以按照本文直接使用。
+          
+
+        
+          <p class="article-more-link">
+            <a href="2018/04/02/JAVA_to_use_POI_to_parse_Excel/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/JAVA/">JAVA</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
+
+
+</section>
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Connect With Us</h3>
+    <div class="widget widget_athemes_social_icons">
+
+    	<ul class="clearfix widget-social-icons">   
+    	
+          
+     			  <li><a href="https://github.com/xiaour" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="https://twitter.com/xiaour" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+            <li><a href="mailto:cityuu@163.com?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
+          
+   		
+   		</ul>
+
+
+   		<!--
+   		<ul class="clearfix widget-social-icons">   		
+   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
+		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
+			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
+			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
+			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
+			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
+		</ul> -->
+
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget_athemes_tabs">
+    <ul id="widget-tab" class="clearfix widget-tab-nav">
+      <li class="active"><a>Recent Posts</a></li>
+    </ul>
+    <div class="widget">
+      <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="2018/08/16/SpringbootRocketMQ/" title=""><img width="50" height="50" src="http://rocketmq.apache.org/assets/images/bright/rmq-feature-lowlatency.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="2018/08/16/SpringbootRocketMQ/">Springboot集成RocketMQ</a></h6>
+              <span>八月 16, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="2018/07/06/SAPI_based_on_Spring_extremely_simple_Restful_API_tool/">SAPI 基于Spring极度简单的Restful API工具</a></h6>
+              <span>七月 6, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="2018/05/23/Springboot_integrated_Kafka/">Springboot集成Kafka</a></h6>
+              <span>五月 23, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="2018/05/02/The_SpringMVC_configuration_is_too_much_Try_SpringBoot/" title=""><img width="50" height="50" src="http://cxyclub.cn/Upload/Images/2015042621/E6ED9F3DF3D8F9AE.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="2018/05/02/The_SpringMVC_configuration_is_too_much_Try_SpringBoot/">SpringMVC配置太多？试试SpringBoot</a></h6>
+              <span>五月 2, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="2018/05/02/The_JAVA_tool_class_of_the_picture_verification_code/">JAVA之图片验证码的工具类</a></h6>
+              <span>五月 2, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="2018/05/01/Syslog_client_UDP_sends_logs/">JAVA之模拟Syslog客户端UDP发送日志</a></h6>
+              <span>五月 1, 2018</span>
+            </div>
+
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="tags/JAVA/">JAVA</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/JAVA-Springboot/">JAVA,Springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/UDP-Syslog/">UDP,Syslog</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/验证码/">验证码</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="tags/JAVA-Springboot/" style="font-size: 10px;">JAVA,Springboot</a> <a href="tags/UDP-Syslog/" style="font-size: 15px;">UDP,Syslog</a> <a href="tags/验证码/" style="font-size: 10px;">验证码</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/07/">七月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/05/">五月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/04/">四月 2018</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 张涛的博客·XIAOUR All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
   </div>
 </footer>
 
-<script src="js/search_core.js"></script>
-<script src="js/script.js"></script>
 
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="categories" class="mobile-nav-link">Categories</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="fancybox/jquery.fancybox.css">
+  <script src="fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="js/scripts.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
 </body>
 </html>

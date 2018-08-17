@@ -1,434 +1,381 @@
 <!DOCTYPE html>
-<html class="full-height">
+<html>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- PACE Progress Bar START -->
   
-  <title>SpringMVC配置太多？试试SpringBoot | 张涛的博客·XIAOUR</title>
+    <script src="../../../../js/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>springmvc配置太多？试试springboot | 张涛的博客·XIAOUR</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SpringMVC相信大家已经不再陌生了，大家可能对于Spring的各种XML配置已经产生了厌恶的感觉，Spring官方发布的Springboot 已经很长时间了，Springboot是一款“约定优于配置”的轻量级框架；Springboot首先解决的就是各种繁琐的XML配置，你可以不用任何XML配置，进行web服务的搭建，其次是Springboot本身就继承了web服务器，如果说前端开发人员想在本">
+  
+  
+  
+  
+  <meta name="description" content="SpringMVC相信大家已经不再陌生了，大家可能对于Spring的各种XML配置已经产生了厌恶的感觉，Spring官方发布的Springboot 已经很长时间了，Springboot是一款“约定优于配置”的轻量级框架；Springboot首先解决的就是各种繁琐的XML配置，你可以不用任何XML配置">
 <meta name="keywords" content="张涛的博客·XIAOUR，JAVA技术博客，Spring Mvc，SpringBoot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringMVC配置太多？试试SpringBoot">
 <meta property="og:url" content="http://totube.cn/2018/05/02/The_SpringMVC_configuration_is_too_much_Try_SpringBoot/index.html">
 <meta property="og:site_name" content="张涛的博客·XIAOUR">
-<meta property="og:description" content="SpringMVC相信大家已经不再陌生了，大家可能对于Spring的各种XML配置已经产生了厌恶的感觉，Spring官方发布的Springboot 已经很长时间了，Springboot是一款“约定优于配置”的轻量级框架；Springboot首先解决的就是各种繁琐的XML配置，你可以不用任何XML配置，进行web服务的搭建，其次是Springboot本身就继承了web服务器，如果说前端开发人员想在本">
+<meta property="og:description" content="SpringMVC相信大家已经不再陌生了，大家可能对于Spring的各种XML配置已经产生了厌恶的感觉，Spring官方发布的Springboot 已经很长时间了，Springboot是一款“约定优于配置”的轻量级框架；Springboot首先解决的就是各种繁琐的XML配置，你可以不用任何XML配置">
 <meta property="og:locale" content="ZH_CN">
 <meta property="og:image" content="http://cxyclub.cn/Upload/Images/2015042621/E6ED9F3DF3D8F9AE.jpg">
-<meta property="og:updated_time" content="2018-07-06T09:26:52.465Z">
+<meta property="og:updated_time" content="2018-08-17T03:43:17.389Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringMVC配置太多？试试SpringBoot">
-<meta name="twitter:description" content="SpringMVC相信大家已经不再陌生了，大家可能对于Spring的各种XML配置已经产生了厌恶的感觉，Spring官方发布的Springboot 已经很长时间了，Springboot是一款“约定优于配置”的轻量级框架；Springboot首先解决的就是各种繁琐的XML配置，你可以不用任何XML配置，进行web服务的搭建，其次是Springboot本身就继承了web服务器，如果说前端开发人员想在本">
+<meta name="twitter:description" content="SpringMVC相信大家已经不再陌生了，大家可能对于Spring的各种XML配置已经产生了厌恶的感觉，Spring官方发布的Springboot 已经很长时间了，Springboot是一款“约定优于配置”的轻量级框架；Springboot首先解决的就是各种繁琐的XML配置，你可以不用任何XML配置">
 <meta name="twitter:image" content="http://cxyclub.cn/Upload/Images/2015042621/E6ED9F3DF3D8F9AE.jpg">
   
     <link rel="alternate" href="/atom.xml" title="张涛的博客·XIAOUR" type="application/atom+xml">
   
-  
-    <link rel="icon" href="/favicon.png">
-  
+  <link rel="icon" href="/css/images/favicon.ico">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="../../../../css/common.css">
-<link rel="stylesheet" href="../../../../css/nav.css">
-<link rel="stylesheet" href="../../../../css/layout.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="../../../../css/style.css">
+
+  <script src="../../../../js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
   
 
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../../../css/my.css">
+  <!-- Google Adsense -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "",
+          enable_page_level_ads: true
+      });
+  </script>
 </head>
 
-<body>
-  <header id="navbar" class="overflow-hidden">
-  <div class="container">
-    <nav class="nav">
-         <div class="nav-left">
-            <a href="/" class="nav-item" style="font-size: 20px;">
-              <span class="logo">张涛</XIAOUR></span>'s Blog
-            </a>
-         </div>
-        <div class="nav-center is-hidden position-relative" id="search_container">
-            <div class="nav-item full-width full-height">
-                <i class="fa fa-search has-padding" aria-hidden="true"></i>
-                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
-                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+<script>
+var themeMenus = {};
+
+  themeMenus["../../../../index.html"] = "Home"; 
+
+  themeMenus["../../../../archives"] = "Archives"; 
+
+  themeMenus["../../../../categories"] = "Categories"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="张涛的博客·XIAOUR" rel="home"> 张涛的博客·XIAOUR </a>
+            
+          </h1>
+
+          
+            <div class="site-description">张涛的博客·XIAOUR，JAVA技术博客</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">Categories</a> </li>
+                    
+              </ul>
             </div>
-            <div id="search_result"></div>
-        </div>
-        <div class="nav-right nav-menu">
-            <a class="nav-item" id="search">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </a>
-            
-            <a class="nav-item" href="../../../../index.html">
-                Home
-            </a>
-            
-        </div>
-        <span class="nav-toggle" id="navMenuDropdown">
-            <span></span>
-            <span></span>
-            <span></span>
-        </span>
-        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
-            
-            <a class="nav-item flex-1" href="../../../../index.html">
-                Home
-            </a>
-            
-        </div>
-    </nav>
+          </nav>
+
+
+      </div>
   </div>
 </header>
 
-  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
-      <div class="main-inner-content">
-          <!--博文页面-->
 
-<style>
-    .header-box {
-        height: 370px;
-        filter: blur(10px);
-        background-size: cover;
-        background-color: lightsteelblue;
-    }
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
 
-    .post-box {
-        padding: 15px;
-        padding-top: 60px;
-        min-height: 80vh;
-        margin-top: -200px;
-        border-radius: 4px;
-        background-color: rgba(255,255,255,.8);
-    }
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
 
-    .post-avatar {
-        height: 30px;
-        width: 30px;
-        border-radius: 50%;
-    }
+  </div>
 
-    .flow-chart {
-        text-align: center;
-    }
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
 
-    img[alt="post-cover"] {
-        display: none;
-    }
-</style>
-<header>
-    <!--<div id="header_box" class="header-box"></div>-->
-</header>
-<section>
-    <div class="container post-box">
-        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
-            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
-                <strong>SpringMVC配置太多？试试SpringBoot</strong>
-            </h1>
+
+
+  <div id="container">
+    <div id="wrap">
             
-            <div class="is-flex align-center">
-                <img class="post-avatar" src="https://avatars2.githubusercontent.com/u/3699646?s=460&v=4">
-                <span style="padding:0 10px;"> <span class="sub-title">By</span> 张涛</XIAOUR></span>
-                <span class="post-date sub-title">at: 2018-05-02</span>
-            </div>
-            
-                <div>
-                    
-                </div>
-            
-        </div>
-        <div class="content" style="overflow: auto">
-            <p><img src="http://cxyclub.cn/Upload/Images/2015042621/E6ED9F3DF3D8F9AE.jpg" alt="post-cover"""><br>SpringMVC相信大家已经不再陌生了，大家可能对于Spring的各种XML配置已经产生了厌恶的感觉，Spring官方发布的Springboot 已经很长时间了，Springboot是一款“约定优于配置”的轻量级框架；Springboot首先解决的就是各种繁琐的XML配置，你可以不用任何XML配置，进行web服务的搭建，其次是Springboot本身就继承了web服务器，如果说前端开发人员想在本地启动后端服务不需要进行各种配置，几乎可以做到一键启动。</p>
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-The_SpringMVC_configuration_is_too_much_Try_SpringBoot" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://cxyclub.cn/Upload/Images/2015042621/E6ED9F3DF3D8F9AE.jpg" rel="gallery_cjkxg8gf3000c0sfy47ldb2i6">
+        <img src="http://cxyclub.cn/Upload/Images/2015042621/E6ED9F3DF3D8F9AE.jpg" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      SpringMVC配置太多？试试SpringBoot
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="" class="article-date">
+	  <time datetime="2018-05-02T03:43:43.000Z" itemprop="datePublished">五月 2, 2018</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>SpringMVC相信大家已经不再陌生了，大家可能对于Spring的各种XML配置已经产生了厌恶的感觉，Spring官方发布的Springboot 已经很长时间了，Springboot是一款“约定优于配置”的轻量级框架；Springboot首先解决的就是各种繁琐的XML配置，你可以不用任何XML配置<a id="more"></a>，进行web服务的搭建，其次是Springboot本身就继承了web服务器，如果说前端开发人员想在本地启动后端服务不需要进行各种配置，几乎可以做到一键启动。</p>
 <p>再有就是目前大热的微服务，而Springboot恰恰满足了快速开发微服务的开发场景；对于目前主流的框架Spring+MyBatis+redis的集成，好吧直接看代码…</p>
 <p>以下代码是整个开发框架集成完之后的，关于Spring官方那一套如何编写启动类，如何配置端口这些随便google一大把的我就不再本文说明了。下面的代码，mybatis mapper我就不贴了，平常怎么写现在也一样，还有redis存数据取数据什么的。本文给的都是划的重点啊！</p>
 <p>1.数据源以及其他的配置文件（PS：说好了不配置，怎么刚开始就上配置？ 答：不配置也可以，如果你想把数据源硬编码写死的话。^_^）</p>
-<p>下面给的是YML的配置文件方式，YML被各种主流的开发语言所支持，相当于常见的.properties文件。</p>
-<pre><code>
-jedis : 
-  pool : 
-    host : 127.0.0.1 
-    port : 6379 
-    config : 
-      maxTotal: 100 
-      maxIdle: 10 
-      maxWaitMillis : 100000
-server : 
-  port :  8080
-
-jdbc:
-    datasource:
-        name: test
-        url: jdbc:mysql://127.0.0.1:3306/test
-        username: root
-        password: 123456
-        # 使用druid数据源
-        type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.jdbc.Driver
-        filters: stat
-        maxActive: 20
-        initialSize: 1
-        maxWait: 60000
-        minIdle: 1
-        timeBetweenEvictionRunsMillis: 60000
-        minEvictableIdleTimeMillis: 300000
-        validationQuery: select 'x'
-        testWhileIdle: true
-        testOnBorrow: false
-        testOnReturn: false
-        poolPreparedStatements: true
-        maxOpenPreparedStatements: 20
-
-
-logging:
-    level:
-       com.ibatis:DEBUG
-</code></pre>
-
+<p>下面给的是YML的配置文件方式，YML被各种主流的开发语言所支持，相当于常见的.properties文件。<br><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">jedis</span> <span class="string">:</span> </span><br><span class="line">  <span class="string">pool</span> <span class="string">:</span> </span><br><span class="line">    <span class="string">host</span> <span class="string">:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> </span><br><span class="line">    <span class="string">port</span> <span class="string">:</span> <span class="number">6379</span> </span><br><span class="line">    <span class="string">config</span> <span class="string">:</span> </span><br><span class="line"><span class="attr">      maxTotal:</span> <span class="number">100</span> </span><br><span class="line"><span class="attr">      maxIdle:</span> <span class="number">10</span> </span><br><span class="line">      <span class="string">maxWaitMillis</span> <span class="string">:</span> <span class="number">100000</span></span><br><span class="line"><span class="string">server</span> <span class="string">:</span> </span><br><span class="line">  <span class="string">port</span> <span class="string">:</span>  <span class="number">8080</span></span><br><span class="line">   </span><br><span class="line"><span class="attr">jdbc:</span></span><br><span class="line"><span class="attr">    datasource:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">test</span></span><br><span class="line"><span class="attr">        url:</span> <span class="attr">jdbc:mysql://127.0.0.1:3306/test</span></span><br><span class="line"><span class="attr">        username:</span> <span class="string">root</span></span><br><span class="line"><span class="attr">        password:</span> <span class="number">123456</span></span><br><span class="line">        <span class="comment"># 使用druid数据源</span></span><br><span class="line"><span class="attr">        type:</span> <span class="string">com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line"><span class="attr">        driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">        filters:</span> <span class="string">stat</span></span><br><span class="line"><span class="attr">        maxActive:</span> <span class="number">20</span></span><br><span class="line"><span class="attr">        initialSize:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        maxWait:</span> <span class="number">60000</span></span><br><span class="line"><span class="attr">        minIdle:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        timeBetweenEvictionRunsMillis:</span> <span class="number">60000</span></span><br><span class="line"><span class="attr">        minEvictableIdleTimeMillis:</span> <span class="number">300000</span></span><br><span class="line"><span class="attr">        validationQuery:</span> <span class="string">select</span> <span class="string">'x'</span></span><br><span class="line"><span class="attr">        testWhileIdle:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">        testOnBorrow:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">        testOnReturn:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">        poolPreparedStatements:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">        maxOpenPreparedStatements:</span> <span class="number">20</span></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line"><span class="attr">logging:</span></span><br><span class="line"><span class="attr">    level:</span></span><br><span class="line">       <span class="string">com.ibatis:DEBUG</span></span><br></pre></td></tr></table></figure></p>
 <p> 2.Springboot启动类</p>
-<pre><code>
-package com.tony.spring.boot;
-import org.mybatis.spring.annotation.MapperScan;
-import org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
-import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
-import org.springframework.boot.web.servlet.ServletComponentScan;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
-/**
- * Created by zhang.tao on 2017/4/19.
- */
-@SpringBootApplication(exclude = MybatisAutoConfiguration.class)
-@ServletComponentScan
-@EnableAutoConfiguration
-@MapperScan("com.tony.spring.boot.mapper")
-public class Application  extends SpringBootServletInitializer implements EmbeddedServletContainerCustomizer {
-    @Value("${server.port}")
-    private int port;//应用的端口
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.tony.spring.boot;</span><br><span class="line"><span class="keyword">import</span> org.mybatis.spring.annotation.MapperScan;</span><br><span class="line"><span class="keyword">import</span> org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Value;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.EnableAutoConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.servlet.ServletComponentScan;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.web.support.SpringBootServletInitializer;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by zhang.tao on 2017/4/19.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span>(exclude = MybatisAutoConfiguration.class)</span><br><span class="line"><span class="meta">@ServletComponentScan</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span></span><br><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"com.tony.spring.boot.mapper"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span>  <span class="keyword">extends</span> <span class="title">SpringBootServletInitializer</span> <span class="keyword">implements</span> <span class="title">EmbeddedServletContainerCustomizer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;server.port&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> port;<span class="comment">//应用的端口</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 启动入口</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String ... args)</span></span>&#123;</span><br><span class="line">        SpringApplication.run(Application.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 自定义端口</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">customize</span><span class="params">(ConfigurableEmbeddedServletContainer container)</span> </span>&#123;</span><br><span class="line">        container.setPort(port);       </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.配置Mysql数据源<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> javax.sql.DataSource;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.bind.RelaxedPropertyResolver;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.EnvironmentAware;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.env.Environment;</span><br><span class="line"><span class="keyword">import</span> org.springframework.transaction.annotation.EnableTransactionManagement;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.pool.DruidDataSource;</span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableTransactionManagement</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DataBaseConfiguration</span> <span class="keyword">implements</span> <span class="title">EnvironmentAware</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> RelaxedPropertyResolver propertyResolver;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Logger log = LoggerFactory.getLogger(DataBaseConfiguration.class);</span><br><span class="line">    <span class="keyword">private</span> Environment env;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEnvironment</span><span class="params">(Environment env)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.env = env;</span><br><span class="line">        <span class="keyword">this</span>.propertyResolver = <span class="keyword">new</span> RelaxedPropertyResolver(env, <span class="string">"jdbc.datasource."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 配置数据源</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span> TODO</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span>(name = <span class="string">"dataSource"</span>,destroyMethod = <span class="string">"close"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        log.debug(env.getActiveProfiles().toString()); </span><br><span class="line">          </span><br><span class="line">         DruidDataSource dataSource = <span class="keyword">new</span> DruidDataSource(); </span><br><span class="line">         dataSource.setUrl(propertyResolver.getProperty(<span class="string">"url"</span>)); </span><br><span class="line">         dataSource.setUsername(propertyResolver.getProperty(<span class="string">"username"</span>));<span class="comment">//用户名 </span></span><br><span class="line">         dataSource.setPassword(propertyResolver.getProperty(<span class="string">"password"</span>));<span class="comment">//密码 </span></span><br><span class="line">         dataSource.setDriverClassName(propertyResolver.getProperty(<span class="string">"driver-class-name"</span>));</span><br><span class="line">         dataSource.setInitialSize(Integer.parseInt(propertyResolver.getProperty(<span class="string">"initialSize"</span>))); </span><br><span class="line">         dataSource.setMaxActive(Integer.parseInt(propertyResolver.getProperty(<span class="string">"maxActive"</span>))); </span><br><span class="line">         dataSource.setMinIdle(Integer.parseInt(propertyResolver.getProperty(<span class="string">"minIdle"</span>))); </span><br><span class="line">         dataSource.setMaxWait(Integer.parseInt(propertyResolver.getProperty(<span class="string">"maxWait"</span>))); </span><br><span class="line">         dataSource.setTimeBetweenEvictionRunsMillis(Integer.parseInt(propertyResolver.getProperty(<span class="string">"timeBetweenEvictionRunsMillis"</span>))); </span><br><span class="line">         dataSource.setMinEvictableIdleTimeMillis(Integer.parseInt(propertyResolver.getProperty(<span class="string">"minEvictableIdleTimeMillis"</span>))); </span><br><span class="line">         dataSource.setValidationQuery(propertyResolver.getProperty(<span class="string">"validationQuery"</span>)); </span><br><span class="line">         dataSource.setTestOnBorrow(Boolean.getBoolean(propertyResolver.getProperty(<span class="string">"testOnBorrow"</span>))); </span><br><span class="line">         dataSource.setTestWhileIdle(Boolean.getBoolean(propertyResolver.getProperty(<span class="string">"testWhileIdle"</span>))); </span><br><span class="line">         dataSource.setTestOnReturn(Boolean.getBoolean(propertyResolver.getProperty(<span class="string">"testOnReturn"</span>))); </span><br><span class="line">         dataSource.setPoolPreparedStatements(Boolean.getBoolean(propertyResolver.getProperty(<span class="string">"poolPreparedStatements"</span>))); </span><br><span class="line">         dataSource.setMaxPoolPreparedStatementPerConnectionSize(Integer.parseInt(propertyResolver.getProperty(<span class="string">"maxOpenPreparedStatements"</span>))); </span><br><span class="line">         <span class="keyword">try</span> &#123;</span><br><span class="line">            dataSource.init();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">             </span><br><span class="line">        &#125;</span><br><span class="line">         <span class="keyword">return</span> dataSource;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>4.Redis数据源配置.<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Qualifier;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Value;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> redis.clients.jedis.JedisPool;</span><br><span class="line"><span class="keyword">import</span> redis.clients.jedis.JedisPoolConfig;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 配置redis数据源</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span> RedisConfig</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Zhang.Tao</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2017年4月24日 下午5:25:30</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> V2.0.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisConfig</span> </span>&#123;</span><br><span class="line">      </span><br><span class="line">     </span><br><span class="line">  <span class="meta">@Bean</span>(name= <span class="string">"jedis.pool"</span>) </span><br><span class="line">  <span class="meta">@Autowired</span> </span><br><span class="line">  <span class="function"><span class="keyword">public</span> JedisPool <span class="title">jedisPool</span><span class="params">(@Qualifier(<span class="string">"jedis.pool.config"</span>)</span> JedisPoolConfig config,  </span></span><br><span class="line"><span class="function">              @<span class="title">Value</span><span class="params">(<span class="string">"$&#123;jedis.pool.host&#125;"</span>)</span>String host,  </span></span><br><span class="line"><span class="function">              @<span class="title">Value</span><span class="params">(<span class="string">"$&#123;jedis.pool.port&#125;"</span>)</span><span class="keyword">int</span> port) </span>&#123; </span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> JedisPool(config, host, port); </span><br><span class="line">  &#125; </span><br><span class="line">     </span><br><span class="line">  <span class="meta">@Bean</span>(name= <span class="string">"jedis.pool.config"</span>) </span><br><span class="line">  <span class="function"><span class="keyword">public</span> JedisPoolConfig <span class="title">jedisPoolConfig</span> <span class="params">(@Value(<span class="string">"$&#123;jedis.pool.config.maxTotal&#125;"</span>)</span><span class="keyword">int</span> maxTotal, </span></span><br><span class="line"><span class="function">                              @<span class="title">Value</span><span class="params">(<span class="string">"$&#123;jedis.pool.config.maxIdle&#125;"</span>)</span><span class="keyword">int</span> maxIdle, </span></span><br><span class="line"><span class="function">                              @<span class="title">Value</span><span class="params">(<span class="string">"$&#123;jedis.pool.config.maxWaitMillis&#125;"</span>)</span><span class="keyword">int</span> maxWaitMillis) </span>&#123; </span><br><span class="line">      JedisPoolConfig config = <span class="keyword">new</span> JedisPoolConfig(); </span><br><span class="line">      config.setMaxTotal(maxTotal); </span><br><span class="line">      config.setMaxIdle(maxIdle); </span><br><span class="line">      config.setMaxWaitMillis(maxWaitMillis); </span><br><span class="line">      <span class="keyword">return</span> config; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>5.API接口代码（是不是很6，想不想赞一下？）<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"><span class="keyword">import</span> com.tony.spring.boot.entity.UserInfo;</span><br><span class="line"><span class="keyword">import</span> com.tony.spring.boot.mapper.UserInfoMapper;</span><br><span class="line"><span class="keyword">import</span> com.tony.spring.boot.utils.JsonUtil;</span><br><span class="line"><span class="keyword">import</span> com.tony.spring.boot.utils.RedisUtil;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Administrator on 2017/4/19.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/test"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestCtrl</span> </span>&#123;</span><br><span class="line">     </span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisUtil redisUtil;</span><br><span class="line">     </span><br><span class="line">    <span class="meta">@Autowired</span> </span><br><span class="line">    <span class="keyword">private</span> UserInfoMapper userInfoMapper; </span><br><span class="line">    <span class="meta">@RequestMapping</span>(value=<span class="string">"/index"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello world"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 向redis存储值</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> value</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/set"</span>) </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">set</span><span class="params">(String key, String value)</span> <span class="keyword">throws</span> Exception</span>&#123; </span><br><span class="line">        redisUtil.set(key, value); </span><br><span class="line">        <span class="keyword">return</span> <span class="string">"success"</span>; </span><br><span class="line">    &#125; </span><br><span class="line">     </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取redis中的值</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/get"</span>) </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">get</span><span class="params">(String key)</span></span>&#123; </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> redisUtil.get(key);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>; </span><br><span class="line">    &#125; </span><br><span class="line">     </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取数据库中的用户</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Description</span> TODO</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/getUser/&#123;id&#125;"</span>) </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">get</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span><span class="keyword">int</span> id)</span>&#123; </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.err.println(id);</span><br><span class="line">            UserInfo user= userInfoMapper.selectByPrimaryKey(id);</span><br><span class="line">            <span class="keyword">return</span> JsonUtil.getJsonString(user);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>6.到这里基本上核心的东西差不多了，去Application.java启动就能用了。赶快试试吧</p>
 
-    /**
-     * 启动入口
-     * @param args
-     */
-    public static void main(String ... args){
-        SpringApplication.run(Application.class, args);
-    }
-
-    /**
-     * 自定义端口
-     */
-    @Override
-    public void customize(ConfigurableEmbeddedServletContainer container) {
-        container.setPort(port);       
-    }
-}
-</code></pre>
-
-<p>3.配置Mysql数据源 </p>
-<pre><code>
-import java.sql.SQLException;
-import javax.sql.DataSource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.bind.RelaxedPropertyResolver;
-import org.springframework.context.EnvironmentAware;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-import com.alibaba.druid.pool.DruidDataSource;
-@Configuration
-@EnableTransactionManagement
-public class DataBaseConfiguration implements EnvironmentAware {
-    private RelaxedPropertyResolver propertyResolver;
-    private static Logger log = LoggerFactory.getLogger(DataBaseConfiguration.class);
-    private Environment env;
-    @Override
-    public void setEnvironment(Environment env) {
-        this.env = env;
-        this.propertyResolver = new RelaxedPropertyResolver(env, "jdbc.datasource.");
-    }
-
-    /**
-     * 配置数据源
-     * @Description TODO
-     * @return
-     */
-    @Bean(name = "dataSource",destroyMethod = "close")
-    public DataSource dataSource() {
-        log.debug(env.getActiveProfiles().toString()); 
-
-         DruidDataSource dataSource = new DruidDataSource(); 
-         dataSource.setUrl(propertyResolver.getProperty("url")); 
-         dataSource.setUsername(propertyResolver.getProperty("username"));//用户名 
-         dataSource.setPassword(propertyResolver.getProperty("password"));//密码 
-         dataSource.setDriverClassName(propertyResolver.getProperty("driver-class-name"));
-         dataSource.setInitialSize(Integer.parseInt(propertyResolver.getProperty("initialSize"))); 
-         dataSource.setMaxActive(Integer.parseInt(propertyResolver.getProperty("maxActive"))); 
-         dataSource.setMinIdle(Integer.parseInt(propertyResolver.getProperty("minIdle"))); 
-         dataSource.setMaxWait(Integer.parseInt(propertyResolver.getProperty("maxWait"))); 
-         dataSource.setTimeBetweenEvictionRunsMillis(Integer.parseInt(propertyResolver.getProperty("timeBetweenEvictionRunsMillis"))); 
-         dataSource.setMinEvictableIdleTimeMillis(Integer.parseInt(propertyResolver.getProperty("minEvictableIdleTimeMillis"))); 
-         dataSource.setValidationQuery(propertyResolver.getProperty("validationQuery")); 
-         dataSource.setTestOnBorrow(Boolean.getBoolean(propertyResolver.getProperty("testOnBorrow"))); 
-         dataSource.setTestWhileIdle(Boolean.getBoolean(propertyResolver.getProperty("testWhileIdle"))); 
-         dataSource.setTestOnReturn(Boolean.getBoolean(propertyResolver.getProperty("testOnReturn"))); 
-         dataSource.setPoolPreparedStatements(Boolean.getBoolean(propertyResolver.getProperty("poolPreparedStatements"))); 
-         dataSource.setMaxPoolPreparedStatementPerConnectionSize(Integer.parseInt(propertyResolver.getProperty("maxOpenPreparedStatements"))); 
-         try {
-            dataSource.init();
-        } catch (SQLException e) {
-
-        }
-         return dataSource;
-    }
-}
-</code></pre>
-
-
-<p>4.Redis数据源配置.</p>
-<pre><code>
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
-/**
- * 配置redis数据源
- *
- * @ClassName RedisConfig
- * @author Zhang.Tao
- * @Date 2017年4月24日 下午5:25:30
- * @version V2.0.0
- */
-@Configuration
-public class RedisConfig {
-
-
-  @Bean(name= "jedis.pool") 
-  @Autowired 
-  public JedisPool jedisPool(@Qualifier("jedis.pool.config") JedisPoolConfig config,  
-              @Value("${jedis.pool.host}")String host,  
-              @Value("${jedis.pool.port}")int port) { 
-      return new JedisPool(config, host, port); 
-  } 
-
-  @Bean(name= "jedis.pool.config") 
-  public JedisPoolConfig jedisPoolConfig (@Value("${jedis.pool.config.maxTotal}")int maxTotal, 
-                              @Value("${jedis.pool.config.maxIdle}")int maxIdle, 
-                              @Value("${jedis.pool.config.maxWaitMillis}")int maxWaitMillis) { 
-      JedisPoolConfig config = new JedisPoolConfig(); 
-      config.setMaxTotal(maxTotal); 
-      config.setMaxIdle(maxIdle); 
-      config.setMaxWaitMillis(maxWaitMillis); 
-      return config; 
-  }
-}
- </code></pre>
-
-<p>5.API接口代码（是不是很6，想不想赞一下？）</p>
-<p><pre><code><br>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.web.bind.annotation.PathVariable;<br>import org.springframework.web.bind.annotation.RequestMapping;<br>import org.springframework.web.bind.annotation.RestController;<br>import com.tony.spring.boot.entity.UserInfo;<br>import com.tony.spring.boot.mapper.UserInfoMapper;<br>import com.tony.spring.boot.utils.JsonUtil;<br>import com.tony.spring.boot.utils.RedisUtil;<br>/**</code></pre></p>
-<ul>
-<li><p>Created by Administrator on 2017/4/19.<br>*/<br>@RestController<br>@RequestMapping(value=”/test”)<br>public class TestCtrl {</p>
-<p> @Autowired<br> private RedisUtil redisUtil;</p>
-<p> @Autowired<br> private UserInfoMapper userInfoMapper;<br> @RequestMapping(value=”/index”)<br> public String index(){</p>
-<pre><code>return &quot;hello world&quot;;
-</code></pre><p> }</p>
-<p> /**</p>
-<ul>
-<li>向redis存储值</li>
-<li>@param key</li>
-<li>@param value</li>
-<li>@return</li>
-<li><p>@throws Exception<br>*/<br>@RequestMapping(“/set”)<br>public String set(String key, String value) throws Exception{<br> redisUtil.set(key, value);<br> return “success”;<br>} </p>
-<p>/**</p>
-</li>
-<li>获取redis中的值</li>
-<li>@param key</li>
-<li><p>@return<br>*/<br>@RequestMapping(“/get”)<br>public String get(String key){<br> try {</p>
-<pre><code>return redisUtil.get(key);
-</code></pre><p> } catch (Exception e) {</p>
-<pre><code>e.printStackTrace();
-</code></pre><p> }<br> return “”;<br>} </p>
-<p>/**</p>
-</li>
-<li>获取数据库中的用户</li>
-<li>@Description TODO</li>
-<li>@param id</li>
-<li>@return<br>*/<br>@RequestMapping(“/getUser/{id}”)<br>public String get(@PathVariable(“id”)int id){<br> try {<pre><code>System.err.println(id);
-UserInfo user= userInfoMapper.selectByPrimaryKey(id);
-return JsonUtil.getJsonString(user);
-</code></pre> } catch (Exception e) {<pre><code>e.printStackTrace();
-</code></pre> }<br> return “”;<br>}<br>}<br><br>6.到这里基本上核心的东西差不多了，去Application.java启动就能用了。赶快试试吧</li>
-</ul>
-</li>
-</ul>
-
-        </div>
-        <div class="post-reply">
-            
-                <!-- 来必力City版安装代码 -->
-                <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTE4Ni81NzUz">
-                    <script type="text/javascript">
-                        (function(d, s) {
-                            var j, e = d.getElementsByTagName(s)[0];
-
-                            if (typeof LivereTower === 'function') { return; }
-
-                            j = d.createElement(s);
-                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                            j.async = true;
-
-                            e.parentNode.insertBefore(j, e);
-                        })(document, 'script');
-                    </script>
-                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-                </div>
-                <!-- City版安装代码已完成 -->
-            
-            
-        </div>
+      
     </div>
-</section>
+    <footer class="entry-meta entry-footer">
+      
+      
+      
+        <div id="donation_div"></div>
+
+<script src="../../../../js/vdonate.js"></script>
 <script>
-    // 获取第一张图, 用以当封面背景图
-    var img = document.querySelectorAll('img')[1]
-
-    if (img) {
-        var header_box = document.querySelector('#header_box')
-        header_box.style.backgroundImage = 'url('+ img.src +')'
-    }
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
 </script>
-      </div>
+      
+            
+      
+    </footer>
   </div>
-  <style>
-  #footer {
-    min-height: 10vh;
-    background: black;
-    color: #fff;
-  }
-
-  #footer a {
-    color: #e1e1e1;
-  }
-</style>
-<footer id="footer" class="has-text-centered is-flex center">
-  <div class="container has-padding">
-    <div>
-      <div>
-        Copyright © 张涛·XIAOUR 2018 
-        <br>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../../23/Springboot_integrated_Kafka/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Springboot集成Kafka
+        
       </div>
+    </a>
+  
+  
+    <a href="../The_JAVA_tool_class_of_the_picture_verification_code/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JAVA之图片验证码的工具类</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav">None</ol>
+    
     </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 张涛的博客·XIAOUR All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
   </div>
 </footer>
 
-<script src="../../../../js/search_core.js"></script>
-<script src="../../../../js/script.js"></script>
 
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="../../../../js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="../../../../categories" class="mobile-nav-link">Categories</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
+  <script src="../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="../../../../js/scripts.js"></script>
+<script src="../../../../js/bootstrap.js"></script>
+<script src="../../../../js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
 </body>
 </html>
