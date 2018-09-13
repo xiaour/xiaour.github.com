@@ -159,6 +159,69 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-SAPI_for_Spring_v1.4"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="2018/09/13/SAPI_for_Spring_v1.4/">SAPI V1.4发布，轻巧的API输出测试组件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="2018/09/13/SAPI_for_Spring_v1.4/" class="article-date">
+	  <time datetime="2018-09-13T05:47:28.000Z" itemprop="datePublished">九月 13, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://opensource.org/licenses/Apache-2.0" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License"></a><br><a href="https://search.maven.org/artifact/com.github.xiaour/xiaour.springboot.sapi.starter/1.4/jar" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/maven-v1.4-blue.svg" alt="Maven"></a></p>
+<h1 id="spring-boot-sapi-starter"><a href="#spring-boot-sapi-starter" class="headerlink" title="spring.boot.sapi.starter"></a>spring.boot.sapi.starter</h1><p>一个简单的API输出工具，只需简单配置，即可将接口中的所有API接口及参数全部以结构化的方式输出的页面上。<br>基于SpringMvc或Springboot的接口管理工具</p>
+<p>1.下载并打包Jar配置好POM<br><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.xiaour<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xiaour.springboot.sapi.starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>2.启动类加入注解@Sapi.<br>controllers属性可以声明多个，如controllers = {“com.example.demo.ctrl”,”com.example.demo2.ctrl”},controllers的路径对应项目中controller所在的路径。enable是SAPI的开关，如果需要上生产环境只需要enable=false就可以了，这样避免在生产暴露接口。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Sapi</span>(controllers = &#123;<span class="string">"com.example.demo.ctrl"</span>&#125;)</span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      SpringApplication.run(DemoApplication.class, args);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.Controller类加入注解@SapiGroup(title=””).<br>SapiGroup是用于分组输出的注解，可以在上面加入中文接口注释，该注解可有可无，如不注解，默认输出的是当前类名。<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SapiGroup</span>(title = <span class="string">"小猫管理"</span>)</span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/cat"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CatController</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>4.项目启动后会在控制台输出一条SAPI的URL，打开就可以看到相关的API了，下面是一个打开后的演示界面。快快测试你的API吧！</p>
+<p> <img src="https://oscimg.oschina.net/oscnet/1a3545fa7abcfff02354740d61ce81daf56.jpg" alt="avatar"></p>
+<h2 id="版本功能"><a href="#版本功能" class="headerlink" title="版本功能"></a>版本功能</h2><p>当前为1.3版本，实现了输出接口URL和参数，分组输出接口；</p>
+<h2 id="2-0版本将实现添加接口说明、历史版本接口管理"><a href="#2-0版本将实现添加接口说明、历史版本接口管理" class="headerlink" title="2.0版本将实现添加接口说明、历史版本接口管理"></a>2.0版本将实现添加接口说明、历史版本接口管理</h2><p>更新日志</p>
+<p>20180621.页面上提供了POST和GET测试。</p>
+<p>20180628.新增支持文件类型的数据。</p>
+<p>20180702.新增支持自定义请求Header。</p>
+<p>20180710.新增了接口分页。</p>
+<p>20180828.优化了返回结果格式化的问题。</p>
+<p>20180907.改版了界面列表展示部分，修复了Class扫描不到的情况。</p>
+<p>20180912.增加了对RequestBody的支持,支持MultipartFile上传文件。</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/JAVA/">JAVA</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-SpringbootRocketMQ"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -721,6 +784,18 @@ var themeMenus = {};
           <li class="clearfix">
 
             
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="2018/09/13/SAPI_for_Spring_v1.4/">SAPI V1.4发布，轻巧的API输出测试组件</a></h6>
+              <span>九月 13, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
               <div class="widget-entry-thumbnail">
                 <a href="2018/08/16/SpringbootRocketMQ/" title=""><img width="50" height="50" src="http://rocketmq.apache.org/assets/images/bright/rmq-feature-lowlatency.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
               </div>
@@ -784,31 +859,26 @@ var themeMenus = {};
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="2018/05/01/Syslog_client_UDP_sends_logs/">JAVA之模拟Syslog客户端UDP发送日志</a></h6>
-              <span>五月 1, 2018</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"></ul>
+    </div>
+  </div>
+
 
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="tags/JAVA/">JAVA</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/JAVA-Springboot/">JAVA,Springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/UDP-Syslog/">UDP,Syslog</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/验证码/">验证码</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="tags/JAVA/">JAVA</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/JAVA-Springboot/">JAVA,Springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/UDP-Syslog/">UDP,Syslog</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/验证码/">验证码</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -828,7 +898,7 @@ var themeMenus = {};
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/07/">七月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/05/">五月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/04/">四月 2018</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/07/">七月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/05/">五月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2018/04/">四月 2018</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
