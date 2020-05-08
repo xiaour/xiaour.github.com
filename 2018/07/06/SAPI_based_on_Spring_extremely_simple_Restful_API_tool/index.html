@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="张涛的博客·XIAOUR">
 <meta property="og:description" content="SAPI是一个及其精简的Restful API输出工具，诞生的背景是基于目前微服务开发接口，很多中小型项目开发人员在对接口测试时不仅需要使用JUnit等进行业务接口测试，还需要对API进行自测。所以SAPI很好的解决了开发人员需要一个一个参数的往接口测试工具填写调试的反复过程。 目前SAPI只需要开发人员引入stater后再启动类加入一行文件即可。下面我们直接看看使用时是什么样的。">
 <meta property="og:locale" content="ZH_CN">
-<meta property="og:updated_time" content="2018-09-13T05:47:28.594Z">
+<meta property="og:updated_time" content="2020-05-08T12:59:54.079Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SAPI 基于Spring极度简单的Restful API工具">
 <meta name="twitter:description" content="SAPI是一个及其精简的Restful API输出工具，诞生的背景是基于目前微服务开发接口，很多中小型项目开发人员在对接口测试时不仅需要使用JUnit等进行业务接口测试，还需要对API进行自测。所以SAPI很好的解决了开发人员需要一个一个参数的往接口测试工具填写调试的反复过程。 目前SAPI只需要开发人员引入stater后再启动类加入一行文件即可。下面我们直接看看使用时是什么样的。">
@@ -189,7 +189,8 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         <p>SAPI是一个及其精简的Restful API输出工具，诞生的背景是基于目前微服务开发接口，很多中小型项目开发人员在对接口测试时不仅需要使用JUnit等进行业务接口测试，还需要对API进行自测。所以SAPI很好的解决了开发人员需要一个一个参数的往接口测试工具填写调试的反复过程。</p>
-<p>目前SAPI只需要开发人员引入stater后再启动类加入一行文件即可。下面我们直接看看使用时是什么样的。<a id="more"></a></p>
+<p>目前SAPI只需要开发人员引入stater后再启动类加入一行文件即可。下面我们直接看看使用时是什么样的。</p>
+<a id="more"></a>
 <h2 id="1-下载并打包Jar配置好POM"><a href="#1-下载并打包Jar配置好POM" class="headerlink" title="1.下载并打包Jar配置好POM"></a>1.下载并打包Jar配置好POM</h2><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.xiaour<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xiaour.springboot.sapi.starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">scope</span>&gt;</span>system<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">systemPath</span>&gt;</span>$&#123;project.basedir&#125;/libs/xiaour.springboot.sapi.starter-1.0.jar<span class="tag">&lt;/<span class="name">systemPath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="启动类加入注解Sapi和ServletComponentScan"><a href="#启动类加入注解Sapi和ServletComponentScan" class="headerlink" title="启动类加入注解Sapi和ServletComponentScan"></a>启动类加入注解Sapi和ServletComponentScan</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Sapi</span>(controllers = &#123;<span class="string">"com.example.demo.ctrl"</span>,<span class="string">"com.example.demo.ctrl2"</span>&#125;)</span><br><span class="line"><span class="meta">@ServletComponentScan</span>(basePackages = &#123;<span class="string">"com.github.xiaour.api_scanner.servlet"</span>&#125;)</span><br><span class="line"><span class="meta">@ComponentScan</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      SpringApplication.run(DemoApplication.class, args);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里说明一下Sapi的controllers是当前项目中需要被输入API的Controller路径，有多个的话配置多个即可。ServletComponentScan中的com.github.xiaour.api_scanner.servlet路径不要忽略。到这里我们的配置几乎就全部完成了。怎么样？是不是相当简单了。</p>
@@ -263,7 +264,7 @@ var a = new Donate({
 
   <div class="clearfix container">
       <div class="site-info">
-	      &copy; 2018 张涛的博客·XIAOUR All Rights Reserved.
+	      &copy; 2020 张涛的博客·XIAOUR All Rights Reserved.
           
             <span id="busuanzi_container_site_uv">
               本站访客数<span id="busuanzi_value_site_uv"></span>人次  
